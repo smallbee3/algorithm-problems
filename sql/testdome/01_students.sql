@@ -11,8 +11,7 @@ TABLE students
    lastName VARCHAR(30) NOT NULL
 
 
-Time : 10 (min)
-
+Time : 10 min
 Tests: 3 pass / 0 fail
   No students named John: Correct answer
   Several students named John: Correct answer

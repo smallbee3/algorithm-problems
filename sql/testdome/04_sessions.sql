@@ -14,7 +14,8 @@ for each user who has more than one session.
 See the example case for more details.
 
 
-Time : 6.4 (min)
+Time : 6.4 min
+Tests: 3 pass / 0 fail
   Example case: Correct answer
   Users with several sessions: Correct answer
   Various users: Correct answer
@@ -27,7 +28,6 @@ HAVING COUNT(userid) > 1
 
 /*
 Result:
-Tests: 3 pass / 0 fail
 userId    AVG(duration)
 -----------------------
 1         12

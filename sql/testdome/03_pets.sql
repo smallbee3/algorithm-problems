@@ -17,8 +17,7 @@ Write a query that select all distinct pet names.
 See the example case for more details.
 
 
-Time : 9.27 (min)
-
+Time : 9.27 min
 Tests: 4 pass / 0 fail
   Example case: Correct answer
   Unique names: Correct answer

@@ -14,8 +14,7 @@ TABLE enrollments
 Write a query that updates the field 'year' of every faulty record to 2015.
 
 
-Time : 3 (min)
-
+Time : 3 min
 Tests: 3 pass / 0 fail
   Ids equal to 20 and 100: Correct answer
   Ids between 20 and 100: Correct answer
