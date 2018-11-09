@@ -1,0 +1,90 @@
+/*
+6. Users And Roles
+
+The following two tables are used to define users and their
+respective roles:
+
+
+TABLE users
+  id INTEGER NOT NULL PRIMARY KEY,
+  userName VARCHAR(50) NOT NULL
+
+TABLE roles
+  id INTEGER NOT NULL PRIMARY KEY,
+  role VARCHAR(20) NOT NULL
+
+
+The users_roles table should contain the mapping between each
+user and their roles. Each user can have many roles, and each
+role can have many users.
+
+Modify the provided SQLite create table statement so that:
+
+* Only users from the users table can exist within users_roles.
+* Only roles from the roles table can exist within users_roles.
+* A user can only have a specific role once.
+
+See the example case for more details.
+
+
+Time : 28.30 min
+Tests: 4 pass / 0 fail
+  Example case: Correct answer
+  Only users from users table can exist: Correct answer
+  Only roles from the roles table can exist: Correct answer
+  A user can only exist within a role once: Correct answer
+
+*/
+
+-- error occurred because of 'FOREIGN KEY'
+CREATE TABLE users_roles (
+  userId INTEGER FOREIGN KEY REFERENCE users(id),
+  roleId INTEGER FOREIGN KEY REFERENCE roles(id)
+);
+
+
+-- MYSQL way
+CREATE TABLE users_roles (
+  userId INTEGER NOT NULL,
+  roleId INTEGER NOT NULL,
+  FOREIGN KEY (userId) REFERENCES users(id),
+  FOREIGN KEY (roleId) REFERENCES roles(id)
+);
+
+
+-- 4 pass
+
+-- 1) separate FOREIGN KEY
+CREATE TABLE users_roles (
+  userId INTEGER NOT NULL,
+  roleId INTEGER NOT NULL,
+  FOREIGN KEY (userId) REFERENCES users(id),
+  FOREIGN KEY (roleId) REFERENCES roles(id),
+  CONSTRAINT PK PRIMARY KEY (userId, roleId)
+);
+
+
+-- 2) no separate FOREIGN KEY
+CREATE TABLE users_roles (
+  userId INTEGER NOT NULL REFERENCES users(id),
+  roleId INTEGER NOT NULL REFERENCES roles(id),
+  CONSTRAINT PK PRIMARY KEY (userId, roleId)
+);
+
+
+
+/*
+Hint 1: The foreign key refers to the primary key or a unique key in the first table.
+
+Hint 2: The primary key can be composed of several columns.
+ */
+
+
+/*
+Result:
+userId    roleId
+----------------
+1         1
+1         2
+2         2
+ */
