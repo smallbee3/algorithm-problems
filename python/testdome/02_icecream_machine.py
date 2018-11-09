@@ -7,14 +7,14 @@
 # For example, IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"]).scoops()
 # should return [['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']].
 
-
-# (Time: 24 minutes)
-
-# Tests: 4 pass / 0 fail
-#   Example case: Correct answer
-#   Various ingredients and one topping: Correct answer
-#   Various ingredients and toppings: Correct answer
-#   No ingredients and no toppings: Correct answer
+"""
+Time: 24 min
+Tests: 4 pass / 0 fail
+  Example case: Correct answer
+  Various ingredients and one topping: Correct answer
+  Various ingredients and toppings: Correct answer
+  No ingredients and no toppings: Correct answer
+"""
 
 
 class IceCreamMachine:

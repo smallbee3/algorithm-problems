@@ -8,13 +8,14 @@
 # For example, calling MergeNames.unique_names(['Ava', 'Emma', 'Olivia'], ['Olivia', 'Sophia', 'Emma'])
 # should return an array containing Ava, Emma, Olivia, and Sophia in any order.
 
-
-# (Time: 10.14 minutes)
-# Tests: 4 pass / 0 fail
-#   Example case: Correct answer
-#   Each array has distinct names: Correct answer
-#   Each array has duplicate names: Correct answer
-#   Arrays have some names in common: Correct answer
+"""
+Time: 10.14 min
+Tests: 4 pass / 0 fail
+  Example case: Correct answer
+  Each array has distinct names: Correct answer
+  Each array has duplicate names: Correct answer
+  Arrays have some names in common: Correct answer
+"""
 
 
 class MergeNames:

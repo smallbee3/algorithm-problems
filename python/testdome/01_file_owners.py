@@ -10,13 +10,13 @@
 # the group_by_owners function should return
 # {'Randy': ['Input.txt', 'Output.txt'], 'Stan': ['Code.py']}.
 
-
-# (Time: 10.41min)
-
-# Tests: 3 pass / 0 fail
-#   Example case: Correct answer
-#   Each owner has a single file: Correct answer
-#   Various files: Correct answer
+"""
+Time: 10.41 min
+Tests: 3 pass / 0 fail
+  Example case: Correct answer
+  Each owner has a single file: Correct answer
+  Various files: Correct answer
+"""
 
 
 class FileOwners:
