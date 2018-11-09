@@ -38,6 +38,12 @@ JOIN sellers ON items.sellerID=sellers.id
 WHERE sellers.rating > 4
 
 
+-- using ALIAS
+SELECT i.name Item, s.name Seller
+FROM items i
+JOIN sellers s ON i.sellerId=s.id
+WHERE s.rating > 4;
+
 /*
 Result:
 Item        Seller

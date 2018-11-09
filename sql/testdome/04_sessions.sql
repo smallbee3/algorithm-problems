@@ -23,7 +23,7 @@ Tests: 3 pass / 0 fail
 
 SELECT userid, AVG(duration) AS AverageDuration
 FROM sessions
-GROUP BY userid
+GROUP BY userId
 HAVING COUNT(userid) > 1
 
 /*
@@ -32,3 +32,10 @@ userId    AVG(duration)
 -----------------------
 1         12
 */
+
+/*
+## NOTE
+> In HAVING clause, userId, id or duration are all available as object of COUNT.
+> Because HAVING clause here just check the number of record, not usedId.
+> userId is already checked by GROUP BY clause.
+ */
