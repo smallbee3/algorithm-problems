@@ -1,16 +1,16 @@
-
-# 01 File Owners
-
-# Implement a group_by_owners function that:
-
-# * Accepts a dictionary containing the file owner name for each file name.
-# * Returns a dictionary containing a list of file names for each owner name, in any order.
-
-# For example, for dictionary {'Input.txt': 'Randy', 'Code.py': 'Stan', 'Output.txt': 'Randy'}
-# the group_by_owners function should return
-# {'Randy': ['Input.txt', 'Output.txt'], 'Stan': ['Code.py']}.
-
 """
+1. File Owners
+
+Implement a group_by_owners function that:
+
+* Accepts a dictionary containing the file owner name for each file name.
+* Returns a dictionary containing a list of file names for each owner name, in any order.
+
+For example, for dictionary {'Input.txt': 'Randy', 'Code.py': 'Stan', 'Output.txt': 'Randy'}
+the group_by_owners function should return
+{'Randy': ['Input.txt', 'Output.txt'], 'Stan': ['Code.py']}.
+
+
 Time: 10.41 min
 Tests: 3 pass / 0 fail
   Example case: Correct answer
