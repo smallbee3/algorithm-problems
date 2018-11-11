@@ -23,6 +23,13 @@ Tests: 3 pass / 0 fail
   Example case: Correct answer
   Correctness: Correct answer
   Performance test on a large tree: Correct answer
+
+
+* Subject - binary tree
+
+* Learning
+    1. The way of return returned response (True)
+
 """
 
 
@@ -48,18 +55,28 @@ class BinarySearchTree:
         # return False
 
         # 2) recursion
+        # if not root:
+        #     return False
+        #
+        # if root.value == value:
+        #     return True
+        # elif root.value < value:
+        #     root = root.right
+        # else:
+        #     root = root.left
+        #
+        # result = BinarySearchTree.contains(root, value)
+        # if result:
+        #     return True
+
+        # 3) recursion refactored
         if not root:
             return False
-
-        if root.value == value:
-            return True
-        elif root.value < value:
-            root = root.right
+        if root.value < value:
+            return BinarySearchTree.contains(root.right, value)
+        elif root.value > value:
+            return BinarySearchTree.contains(root.left, value)
         else:
-            root = root.left
-
-        result = BinarySearchTree.contains(root, value)
-        if result:
             return True
 
 
@@ -68,3 +85,39 @@ n3 = BinarySearchTree.Node(value=3, left=None, right=None)
 n2 = BinarySearchTree.Node(value=2, left=n1, right=n3)
 
 print(BinarySearchTree.contains(n2, 3))
+
+
+"""
+181111 Review
+
+Time : 16.30 (min)
+Tests: 3 pass / 0 fail
+  Example case: Correct answer
+  Correctness: Correct answer
+  Performance test on a large tree: Correct answer
+"""
+
+# import collections
+#
+#
+# class BinarySearchTree:
+#     Node = collections.namedtuple('Node', ['left', 'right', 'value'])
+#
+#     @staticmethod
+#     def contains(root, value):
+#
+#         if not root:
+#             return False
+#         if root.value < value:
+#             return BinarySearchTree.contains(root.right, value)
+#         elif root.value > value:
+#             return BinarySearchTree.contains(root.left, value)
+#         else:
+#             return True
+#
+#
+# n1 = BinarySearchTree.Node(value=1, left=None, right=None)
+# n3 = BinarySearchTree.Node(value=3, left=None, right=None)
+# n2 = BinarySearchTree.Node(value=2, left=n1, right=n3)
+#
+# print(BinarySearchTree.contains(n2, 3))

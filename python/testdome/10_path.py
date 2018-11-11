@@ -30,6 +30,23 @@ Tests: 3 pass / 1 fail
   Selecting child directories: Correct answer
   Selecting parent directories: Correct answer
   Selecting complex paths: Wrong answer
+
+
+* Subject - Use regex and separate conditions
+
+* Learning
+    1. The usage of regex
+    2. change directory functions type
+        cd /<directory>
+        cd .. (cd ...)
+        cd ../<directory>
+        cd <directory>
+        cd ./<directory>
+
+        [exeptions]
+        /x.abc
+
+
 """
 
 

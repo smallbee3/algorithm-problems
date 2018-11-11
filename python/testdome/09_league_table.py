@@ -35,6 +35,89 @@ Tests: 4 pass / 0 fail
   Players have different scores: Correct answer
   Players tied by score: Correct answer
   Players tied by games played: Correct answer
+
+
+* Subject - Comparing with three options
+
+* Learning
+    1. Do coding as you write pseudo code
+    2. The usage of 'Counter' function
+    3. Mistake when make a new sorted list by 'insert' function
+
+"""
+
+
+from collections import Counter
+from collections import OrderedDict
+
+
+# class LeagueTable:
+#     def __init__(self, players):
+#         self.standings = OrderedDict([(player, Counter()) for player in players])
+#
+#     def record_result(self, player, score):
+#         self.standings[player]['games_played'] += 1
+#         self.standings[player]['score'] += score
+#
+#     def player_rank(self, rank):
+#
+#         def compare_player(i, j):
+#
+#             if self.standings[i]['score'] > self.standings[j]['score']:
+#                 return i
+#             elif self.standings[i]['score'] < self.standings[j]['score']:
+#                 return j
+#             else:
+#
+#                 if self.standings[i]['games_played'] < self.standings[j]['games_played']:
+#                     return i
+#                 elif self.standings[i]['games_played'] > self.standings[j]['games_played']:
+#                     return j
+#                 else:
+#
+#                     player_list = list(self.standings.keys())
+#                     if player_list.index(i) < player_list.index(j):
+#                         return i
+#                     else:
+#                         return j
+#
+#         rank_list = []
+#         for i in self.standings.keys():
+#             if rank_list == []:
+#                 rank_list.insert(0, i)
+#             else:
+#                 for idx, j in enumerate(rank_list):
+#                     result = compare_player(i, j)
+#                     if result == i:
+#                         rank_list.insert(idx, i)
+#                         break
+#
+#                     # The missing point where makes IndexError
+#                     elif idx+1 == len(rank_list):
+#                         rank_list.insert(idx+1, i)
+#                         break
+#
+#         return rank_list[rank-1]
+#
+#
+# table = LeagueTable(['Mike', 'Chris', 'Arnold'])
+# table.record_result('Mike', 3)
+# table.record_result('Mike', 6)
+# table.record_result('Arnold', 7)
+# table.record_result('Arnold', 2)
+# table.record_result('Chris', 6)
+# print(table.player_rank(1))
+
+
+"""
+181111 Review
+
+Time : 35 min
+Tests: 4 pass / 0 fail
+  Example case: Correct answer 
+  Players have different scores: Correct answer 
+  Players tied by score: Correct answer 
+  Players tied by games played: Correct answer 
 """
 
 
@@ -50,51 +133,42 @@ class LeagueTable:
         self.standings[player]['games_played'] += 1
         self.standings[player]['score'] += score
 
-    def player_rank(self, rank):
-
-        def compare_player(i, j):
-
-            if self.standings[i]['score'] > self.standings[j]['score']:
+    def compare_player(self, i, j):
+        if self.standings[i]['score'] > self.standings[j]['score']:
+            return i
+        elif self.standings[i]['score'] < self.standings[j]['score']:
+            return j
+        else:
+            if self.standings[i]['games_played'] < self.standings[j]['games_played']:
                 return i
-            elif self.standings[i]['score'] < self.standings[j]['score']:
+            elif self.standings[i]['games_played'] > self.standings[j]['games_played']:
                 return j
             else:
+                i_idx = list(self.standings.keys()).index(i)
+                j_idx = list(self.standings.keys()).index(j)
+                # if i_idx < j_idx:
+                #     return i
+                # else:
+                #     return j
+                return i if i_idx < j_idx else j
 
-                if self.standings[i]['games_played'] < self.standings[j]['games_played']:
-                    return i
-                elif self.standings[i]['games_played'] > self.standings[j]['games_played']:
-                    return j
-                else:
-
-                    player_list = list(self.standings.keys())
-                    if player_list.index(i) < player_list.index(j):
-                        return i
-                    else:
-                        return j
-
-        rank_list = []
-        for i in self.standings.keys():
-            if rank_list == []:
-                rank_list.insert(0, i)
-            else:
-                for idx, j in enumerate(rank_list):
-                    result = compare_player(i, j)
-                    if result == i:
-                        rank_list.insert(idx, i)
-                        break
-
-                    # The missing point where makes IndexError
-                    elif idx+1 == len(rank_list):
-                        rank_list.insert(idx+1, i)
-                        break
+    def player_rank(self, rank):
+        rank_list = [list(self.standings.keys())[0]]
+        for i in list(self.standings.keys())[1:]:
+            for idx, j in enumerate(rank_list):
+                if self.compare_player(i, j) == i:
+                    rank_list.insert(idx, i)
+                    break
+                if idx == len(rank_list)-1:
+                    rank_list.insert(idx+1, i)
+                    break
 
         return rank_list[rank-1]
 
 
 table = LeagueTable(['Mike', 'Chris', 'Arnold'])
+table.record_result('Mike', 2)
 table.record_result('Mike', 3)
-table.record_result('Mike', 6)
-table.record_result('Arnold', 7)
-table.record_result('Arnold', 2)
-table.record_result('Chris', 6)
+table.record_result('Arnold', 5)
+table.record_result('Chris', 5)
 print(table.player_rank(1))

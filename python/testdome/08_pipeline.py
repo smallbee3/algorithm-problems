@@ -25,13 +25,18 @@ Tests: 2 pass / 1 fail
   Example case: Correct answer
   Various functions: File "pipeline.py", line 11, in helper: TypeError
   Various data types: Correct answer
+
+
+* Subject - Closure, Decorator(core concept)
+* Learning
+    1. passing func to *args (tuple)
+
 """
 
 
 # class Pipeline:
 #     @staticmethod
 #     def pipeline(*funcs):
-#
 #         funcs_list = list(funcs)
 #
 #         def helper(arg):
@@ -48,23 +53,54 @@ Tests: 2 pass / 1 fail
 #                 return result
 #         return helper
 
+# class Pipeline:
+#     @staticmethod
+#     def pipeline(*funcs):
+#         i = 0
+#
+#         def helper(arg):
+#             # Step 2
+#             nonlocal i
+#             result = funcs[i](arg)
+#             i += 1
+#             if i < len(funcs):
+#                 return helper(result)
+#             else:
+#                 return result
+#         return helper
+#
+#
+# fun = Pipeline.pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2)
+# # fun = Pipeline.pipeline(lambda x: x * 3)
+# print(fun(3))  # should print 5.0
+
+"""
+181111 Review
+
+Time : 29 min
+Tests: 3 pass / 0 fail
+  Example case: Correct answer 
+  Various functions: Correct answer 
+  Various data types: Correct answer 
+"""
+
+
 class Pipeline:
     @staticmethod
     def pipeline(*funcs):
-        i = 0
-
-        def helper(arg):
-            # Step 2
-            nonlocal i
-            result = funcs[i](arg)
-            i += 1
-            if i < len(funcs):
-                return helper(result)
+        def helper(arg, *func_list):
+            if not func_list:
+                arg = funcs[0](arg)
+                func_list = funcs
             else:
-                return result
+                func_list = func_list[0]
+                arg = func_list[0](arg)
+
+            if len(func_list) == 1:
+                return arg
+            return helper(arg, func_list[1:])
         return helper
 
 
 fun = Pipeline.pipeline(lambda x: x * 3, lambda x: x + 1, lambda x: x / 2)
-# fun = Pipeline.pipeline(lambda x: x * 3)
 print(fun(3))  # should print 5.0

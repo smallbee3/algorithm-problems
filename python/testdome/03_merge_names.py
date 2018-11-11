@@ -15,6 +15,10 @@ Tests: 4 pass / 0 fail
   Each array has distinct names: Correct answer
   Each array has duplicate names: Correct answer
   Arrays have some names in common: Correct answer
+
+
+* Subject - Eradicate duplicate elements
+
 """
 
 
@@ -54,3 +58,39 @@ class MergeNames:
 names1 = ["Ava", "Emma", "Olivia", "Emma"]
 names2 = ["Olivia", "Sophia", "Emma"]
 print(MergeNames.unique_names(names1, names2)) # should print Ava, Emma, Olivia, Sophia
+
+
+"""
+181111 Review
+
+Time: 4.30 min
+Tests: 4 pass / 0 fail
+  Example case: Correct answer
+  Each array has distinct names: Correct answer
+  Each array has duplicate names: Correct answer
+  Arrays have some names in common: Correct answer
+"""
+
+
+# class MergeNames:
+#
+#     @staticmethod
+#     def unique_names(names1, names2):
+#
+#         # 1) set
+#         # names1 = list(set(names1))
+#
+#         # 2) no set
+#         for j in names1:
+#             while names1.count(j) > 1:
+#                 del names1[names1.index(j)]
+#
+#         for i in names2:
+#             if not i in names1:
+#                 names1.append(i)
+#         return names1
+#
+#
+# names1 = ["Ava", "Emma", "Olivia"]
+# names2 = ["Olivia", "Sophia", "Emma"]
+# print(MergeNames.unique_names(names1, names2)) # should print Ava, Emma, Olivia, Sophia
