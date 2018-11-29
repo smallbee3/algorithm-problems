@@ -172,3 +172,142 @@ table.record_result('Mike', 3)
 table.record_result('Arnold', 5)
 table.record_result('Chris', 5)
 print(table.player_rank(1))
+
+
+"""
+181129 Review 2
+
+Time : 60 min
+Tests: 4 pass / 0 fail
+  Example case: Correct answer 
+  Players have different scores: Correct answer 
+  Players tied by score: Correct answer 
+  Players tied by games played: Correct answer 
+"""
+
+from collections import Counter
+from collections import OrderedDict
+
+
+class LeagueTable:
+    def __init__(self, players):
+        self.standings = OrderedDict([(player, Counter()) for player in players])
+
+    def record_result(self, player, score):
+        self.standings[player]['games_played'] += 1
+        self.standings[player]['score'] += score
+
+    def compare_score(self, i, j):
+
+        if self.standings[i]['score'] > self.standings[j]['score']:
+            return i
+        elif self.standings[i]['score'] < self.standings[j]['score']:
+            return j
+        else:
+            return 'tie'
+
+    def compare_games_played(self, i, j):
+        if self.standings[i]['games_played'] < self.standings[j]['games_played']:
+            return i
+        elif self.standings[i]['games_played'] > self.standings[j]['games_played']:
+            return j
+        else:
+            return 'tie'
+
+    def compare_order(self, i, j):
+        keys_list = list(self.standings.keys())
+
+        if keys_list.index(i) < keys_list.index(j):
+            return i
+        return j
+
+    # 181129
+    # * Early exit by 'continue' is not available
+    # Because the last element cannot be inserted to the list
+
+    # def player_rank(self, rank):
+    #     rank_list = []
+    #     for i in self.standings:
+    #         if not rank_list:
+    #             rank_list.append(i)
+    #             continue
+    #
+    #         for idx, j in enumerate(rank_list):
+    #             # score
+    #             ret = self.compare_score(i, j)
+    #             if ret == j:
+    #                 continue
+    #             if ret == i:
+    #                 rank_list.insert(idx, i)
+    #                 break
+    #
+    #             ret = self.compare_games_played(i, j)
+    #             # games_played
+    #             if ret == j:
+    #                 continue
+    #             if ret == i:
+    #                 rank_list.insert(idx, i)
+    #                 break
+    #
+    #             # order
+    #             ret = self.compare_order(i, j)
+    #             if ret == i:
+    #                 rank_list.insert(idx, i)
+    #                 break
+    #
+    #     return rank_list[rank-1]
+
+    def player_rank(self, rank):
+        rank_list = []
+        for i in self.standings:
+            if not rank_list:
+                rank_list.append(i)
+                continue
+
+            for idx, j in enumerate(rank_list):
+                # score
+                ret = self.compare_score(i, j)
+                if ret == i:
+                    rank_list.insert(idx, i)
+                    break
+
+                elif ret == 'tie':
+                    # games_played
+                    ret = self.compare_games_played(i, j)
+                    if ret == i:
+                        rank_list.insert(idx, i)
+                        break
+
+                    elif ret == 'tie':
+                        # order
+                        ret = self.compare_order(i, j)
+                        if ret == i:
+                            rank_list.insert(idx, i)
+                            break
+
+            # missing point
+            if idx == len(rank_list)-1:
+                rank_list.insert(idx+1, i)
+
+        return rank_list[rank-1]
+
+
+table = LeagueTable(['Mike', 'Chris', 'Arnold'])
+table.record_result('Mike', 2)
+table.record_result('Mike', 3)
+table.record_result('Arnold', 5)
+table.record_result('Chris', 1)
+print(table.player_rank(1))
+
+
+
+
+
+
+
+
+
+
+
+
+
