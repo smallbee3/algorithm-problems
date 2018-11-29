@@ -208,3 +208,109 @@ path = Path('/a/b/c/d')
 
 
 print(path.current_path)
+
+
+"""
+181129 Review 2
+
+Time : 60 min
+Tests: 3 pass / 1 fail
+  Example case: Correct answer 
+  Selecting child directories: Correct answer 
+  Selecting parent directories: Correct answer 
+  Selecting complex paths: Wrong answer  
+"""
+
+
+class Path:
+    def __init__(self, path):
+        self.current_path = path
+
+    def cd(self, new_path):
+
+        # invalid path
+        if re.search(r'[^a-z|A-Z|.|/]', new_path):
+            print('no change!')
+            return False
+
+        # absolute path
+        if new_path.startswith('/'):
+            self.current_path = new_path
+            return
+
+        # relative path
+        if new_path.startswith('..'):
+            dot_num = new_path.count('.')
+            cur_path_list = self.current_path.split('/')
+            cur_path_list = cur_path_list[:-(dot_num-1)]
+
+            new_path = new_path[dot_num+1:]
+            new_path_list = new_path.split('/')
+
+            if new_path != '':
+                result_list = cur_path_list[1:] + new_path_list
+            else:
+                result_list = cur_path_list[1:]
+
+            self.current_path = '/' + '/'.join(result_list)
+            return
+
+        # sub folder 1
+        if new_path.startswith('./'):
+            new_path = new_path[2:]
+
+        # sub folder 2
+        self.current_path = self.current_path + '/' + new_path
+
+
+path = Path('/a/b/c/d')
+
+# Select parent directory
+# path.cd('../x')
+# path.cd('.../x')
+# path.cd('..../x')
+# path.cd('...../x')
+
+# Select child directory
+# path.cd('x')
+# path.cd('./x')
+
+
+# Exceptions 1
+
+# path.cd('1x')
+# path.cd('x1')
+# path.cd('x*')
+# path.cd('*x')
+
+
+# Exceptions 2
+
+# path.cd('x.abc')
+# path.cd('x.abc/etc')
+# path.cd('x.abc/etc/new')
+# path.cd('./x.abc')
+# path.cd('../x.abc')
+# path.cd('.../x.abc')
+
+
+# Exceptions 3
+
+# path.cd('..')
+# path.cd('...')
+# path.cd('....')
+path.cd('.....')
+
+print(path.current_path)
+
+
+# /a/b/c
+# ../x/y/c
+# /
+# ..
+#
+
+
+
+
+
