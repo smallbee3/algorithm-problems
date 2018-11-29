@@ -27,6 +27,7 @@ Tests : 3 pass / 1 fail (Time limit exceeded)
 
 * Learning
     1. Use hash table on time efficiency issue
+    2. The value of hashtable could work as a flag (1, 0)
 
 """
 
@@ -70,7 +71,7 @@ Tests : 3 pass / 1 fail (Time limit exceeded)
 #     #             return True
 #
 #     """
-#     2) Wrong placement of 'name_list.append(self.name)'
+#     2) 1 fail : Performance test on a large playlist: Time limit exceeded
 #     """
 #
 #     def is_repeating_playlist(self):
@@ -97,13 +98,65 @@ Tests : 3 pass / 1 fail (Time limit exceeded)
 # second.next_song(third)
 # third.next_song(fourth)
 # # fourth.next_song(third)
-# fourth.next_song(second) # -> infinite loop
+# fourth.next_song(second)
 #
-#
-# time_a = time.time()
 # print(first.is_repeating_playlist())
-# running_time = time.time() - time_a
-# print(running_time)
+
+
+"""
+Time : 24.44 (min)
+Tests: 4 pass / 0 fail
+  Example case: Correct answer
+  Song will repeat: Correct answer
+  Song will not repeat: Correct answer
+  Performance test on a large playlist: Correct answer
+"""
+
+
+class Song:
+    def __init__(self, name):
+        self.name = name
+        self.next = None
+
+    def next_song(self, song):
+        self.next = song
+
+    def is_repeating_playlist(self):
+        """
+        :returns: (bool) True if the playlist is repeating, False if not.
+        """
+        # 1) list : fail
+        # song = self
+        # played_songs = []
+        #
+        # while song:
+        #     if song.name in played_songs:
+        #         return True
+        #     played_songs.append(song.name)
+        #     song = song.next
+        # return False
+
+        # 2) dict : pass
+        song = self
+        played_songs = {}
+
+        while song:
+            if played_songs.get(song.name):
+                return True
+
+            played_songs[song.name] = 1
+            song = song.next
+        return False
+
+
+first = Song("Hello")
+second = Song("Eye of the tiger")
+
+first.next_song(second)
+second.next_song(first)
+
+print(first.is_repeating_playlist())
+
 
 """
 181111 Review
@@ -117,9 +170,19 @@ Tests: 4 pass / 0 fail
 """
 
 
-class Song:
-    played_song_dict = {}
+"""
+181129 Review
 
+Time : 5 (min)
+Tests: 4 pass / 0 fail
+  Example case: Correct answer
+  Song will repeat: Correct answer
+  Song will not repeat: Correct answer
+  Performance test on a large playlist: Correct answer
+"""
+
+
+class Song:
     def __init__(self, name):
         self.name = name
         self.next = None
@@ -131,16 +194,14 @@ class Song:
         """
         :returns: (bool) True if the playlist is repeating, False if not.
         """
-
-        while True:
-            if not self.next:
-                return False
-            if self.played_song_dict.get(self.name):
+        dict1 = {}
+        node = self
+        while node:
+            if dict1.get(node.name):
                 return True
-            else:
-                self.played_song_dict[self.name] = 1
-            self = self.next
-            print(self.played_song_dict)
+            dict1[node.name] = 1
+            node = node.next
+        return False
 
 
 # first = Song("Hello")

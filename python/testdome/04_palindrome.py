@@ -16,6 +16,10 @@ Tests: 3 pass / 0 fail
   Various words: Correct answer
   Example case: Correct answer
   Lowercase words: Correct answer
+
+* Learning
+    1. Slicing iterable data with step
+
 """
 
 
@@ -36,16 +40,18 @@ class Palindrome:
     #             return False
     #     return True
 
+    # 181129
+    # I like the answer with slicing
     # 2) Slicing
     @staticmethod
     def is_palindrome(word):
         word = word.lower()
         for i in range(len(word) // 2):
 
-            print(i)
-            print(word[i])
-            print(-(i+1))
-            print(word[-(i+1)])
+            # print(i)
+            # print(word[i])
+            # print(-(i+1))
+            # print(word[-(i+1)])
 
             if word[i] != word[-(i+1)]:
                 return False

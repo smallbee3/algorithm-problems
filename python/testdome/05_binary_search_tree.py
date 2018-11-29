@@ -97,27 +97,51 @@ Tests: 3 pass / 0 fail
   Performance test on a large tree: Correct answer
 """
 
-# import collections
-#
-#
-# class BinarySearchTree:
-#     Node = collections.namedtuple('Node', ['left', 'right', 'value'])
-#
-#     @staticmethod
-#     def contains(root, value):
-#
-#         if not root:
-#             return False
-#         if root.value < value:
-#             return BinarySearchTree.contains(root.right, value)
-#         elif root.value > value:
-#             return BinarySearchTree.contains(root.left, value)
-#         else:
-#             return True
-#
-#
-# n1 = BinarySearchTree.Node(value=1, left=None, right=None)
-# n3 = BinarySearchTree.Node(value=3, left=None, right=None)
-# n2 = BinarySearchTree.Node(value=2, left=n1, right=n3)
-#
-# print(BinarySearchTree.contains(n2, 3))
+"""
+181129 Review 2
+
+Time : 10 (min)
+Tests: 3 pass / 0 fail
+  Example case: Correct answer
+  Correctness: Correct answer
+  Performance test on a large tree: Correct answer
+"""
+
+import collections
+
+
+class BinarySearchTree:
+    Node = collections.namedtuple('Node', ['left', 'right', 'value'])
+
+    @staticmethod
+    def contains(root, value):
+
+        # 1) while loop
+        # node = root
+        # while node:
+        #     if node.value == value:
+        #         return True
+        #     if node.value > value:
+        #         node = node.left
+        #     elif node.value < value:
+        #         node = node.right
+        # return False
+
+        # 2) recursion
+        node = root
+        if node is None:
+            return False
+
+        if node.value == value:
+            return True
+        if node.value > value:
+            return BinarySearchTree.contains(node.left, value)
+        if node.value < value:
+            return BinarySearchTree.contains(node.right, value)
+
+
+n1 = BinarySearchTree.Node(value=1, left=None, right=None)
+n3 = BinarySearchTree.Node(value=3, left=None, right=None)
+n2 = BinarySearchTree.Node(value=2, left=n1, right=n3)
+
+print(BinarySearchTree.contains(n2, 1))

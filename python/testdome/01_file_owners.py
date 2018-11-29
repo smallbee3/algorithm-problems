@@ -83,3 +83,40 @@ files = {
     'Output.txt': 'Randy'
 }
 print(FileOwners.group_by_owners(files))
+
+
+"""
+181129 Review 2
+
+Time: 5 min
+Tests: 3 pass / 0 fail
+  Example case: Correct answer
+  Each owner has a single file: Correct answer
+  Various files: Correct answer
+"""
+
+
+# class FileOwners:
+#
+#     @staticmethod
+#     def group_by_owners(files):
+#
+#         dict = {}
+#         for key in files:
+#         #     value = files[key]
+#         #     if dict.get(value):
+#         #         dict[value].append(key)
+#         #     else:
+#         #         dict[value] = [key]
+#
+#             dict[files[key]] = dict[files[key]] + [key] if dict.get(files[key]) else [key]
+#
+#         return dict
+#
+#
+# files = {
+#     'Input.txt': 'Randy',
+#     'Code.py': 'Stan',
+#     'Output.txt': 'Randy'
+# }
+# print(FileOwners.group_by_owners(files))
