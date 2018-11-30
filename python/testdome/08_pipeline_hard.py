@@ -126,7 +126,7 @@ class Pipeline:
             if not funcs2:
                 ret = funcs[0](arg)
 
-                # This made an exception above
+                # This made an exception(error) above
                 return helper(ret, funcs[1:])
 
                 # hot_fix

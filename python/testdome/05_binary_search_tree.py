@@ -28,7 +28,7 @@ Tests: 3 pass / 0 fail
 * Subject - binary tree
 
 * Learning
-    1. The way of return returned response (True)
+    1. The way of return returned response in a recursive function (True)
 
 """
 

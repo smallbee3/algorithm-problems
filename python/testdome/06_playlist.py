@@ -26,7 +26,7 @@ Tests : 3 pass / 1 fail (Time limit exceeded)
 * Subject - linked list
 
 * Learning
-    1. Use hash table on time efficiency issue
+    1. Use hash table on problem with the time efficiency issue
     2. The value of hashtable could work as a flag (1, 0)
 
 """

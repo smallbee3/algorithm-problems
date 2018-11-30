@@ -18,6 +18,9 @@ Tests: 4 pass / 0 fail
 
 * Subject - All subset in code
 
+* Learning
+    1. Sequence is irrelevant with making a all subsets with two lists
+
 """
 
 

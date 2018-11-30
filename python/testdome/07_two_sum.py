@@ -21,9 +21,9 @@ following pairs of indices:
        (Because if put element into Value, No way to find the value.
         So, put element into Value, but make index as a list for duplicate issue.)
 
-    2. Do not use "list.index(x)", "x in [list]" ...
+    2. Do not use "list.index(x)", "x in [list]" etc on a problem with time efficiency issue
 
-    3. 'key in dict' is also fast!
+    3. 'key in dict' is as fast as 'dict.get(key)', I guess
 """
 
 

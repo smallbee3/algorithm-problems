@@ -81,6 +81,7 @@ class MergeNames:
         # names1 = list(set(names1))
 
         # 2) no set 1
+        #   - Inserting data into new list
         # ret = names1 + names2
         # ret2 = []
         # for i in ret:
@@ -91,6 +92,7 @@ class MergeNames:
         # 181129
         # I like the third solution which I made on November 11
         # 3) no set 3
+        #   - Using count, index function
         ret = names1 + names2
         for i in ret:
             while ret.count(i) > 1:
