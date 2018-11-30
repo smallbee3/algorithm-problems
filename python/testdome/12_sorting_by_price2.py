@@ -1,4 +1,10 @@
 
+# https://www.savour-it.com/posts/2018-02-24-hyper-connect2/
+
+# It seems this code made an error though it is so simple.
+# It cannot sort the json list using the second way : alphabetical order.
+
+
 import json
 
 

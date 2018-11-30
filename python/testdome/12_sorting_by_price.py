@@ -50,9 +50,9 @@ print(Products.sort_by_price_ascending(
     1. sorting through two ways
         - Insert into new sorted list (V, prefer)
         - Swapping
-    2. json
+    2. read JSON file in python using json function
         - json.loads(<json-string>)
-        - json.dumps(<>)
+        - json.dumps(<list with dicts>)
 
 """
 
@@ -101,6 +101,8 @@ print(Products.sort_by_price_ascending(
 
 
 """
+181112 Review
+
 Time : 13 min
 """
 
@@ -140,9 +142,60 @@ class Products:
         return json.dumps(sorted_list)
 
 
-# print(Products.sort_by_price_ascending(
-#     '[{"name":"eggs","price":1},{"name":"coffee","price":9.99},{"name":"rice","price":4.04}]')
-# )
+print(Products.sort_by_price_ascending(
+    '[{"name":"eggs","price":1},{"name":"coffee","price":9.99},{"name":"rice","price":4.04}]')
+)
+print(Products.sort_by_price_ascending(
+    '[{"name":"eggs","price":1},{"name":"coffee","price":9.99},{"name":"rice","price":4.04},{"name":"rice2","price":4.06},{"name":"rice3","price":4.09}]')
+)
+
+
+"""
+181130 Review
+
+Time : 12 min
+"""
+
+# 181130
+# Nested structure removed in the inner function
+
+
+class Products:
+
+    @staticmethod
+    def sort_by_price_ascending(json_string):
+
+        def compare_price_and_name(dict1, dict2):
+            if dict1['price'] < dict2['price']:
+                return dict1
+            elif dict1['price'] > dict2['price']:
+                return dict2
+
+            if dict['name'] < dict2['name']:
+                return dict1
+            else:
+                return dict2
+
+        json_list = json.loads(json_string)
+
+        new_list = [json_list[0]]
+        for dict1 in json_list[1:]:
+
+            for idx, dict2 in enumerate(new_list):
+                if compare_price_and_name(dict1, dict2) == dict1:
+                    new_list.insert(idx, dict1)
+                    break
+                if idx == len(new_list)-1:
+                    new_list.insert(idx+1, dict1)
+                    break
+
+        return json.dumps(new_list)
+
+
+print()
+print(Products.sort_by_price_ascending(
+    '[{"name":"eggs","price":1},{"name":"coffee","price":9.99},{"name":"rice","price":4.04}]')
+)
 print(Products.sort_by_price_ascending(
     '[{"name":"eggs","price":1},{"name":"coffee","price":9.99},{"name":"rice","price":4.04},{"name":"rice2","price":4.06},{"name":"rice3","price":4.09}]')
 )
