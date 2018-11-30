@@ -61,3 +61,52 @@ if __name__ == '__main__':
     input = ["flower", "flow", "flight"]
     solution = Solution()
     print(solution.longestCommonPrefix(input))
+
+
+"""
+
+181130 Review 2
+
+Time : 30 min
+
+"""
+
+# 181130
+# The code above using inner function is easier to understand.
+# It took too much time to write the code below.
+
+
+class Solution:
+
+    @classmethod
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+
+        if not strs:
+            return ""
+
+        longest_str = strs[0]
+        for str1 in strs[1:]:
+
+            short_length = longest_str if len(longest_str) < len(str1) else str1
+            common_str = ''
+
+            for i in range(len(short_length)):
+                if str1[i] != longest_str[i]:
+                    break
+                common_str += str1[i]
+
+            # 181130
+            # No need to compare, because the result itself is already longest_str
+            # if len(longest_str) > len(common_str):
+            longest_str = common_str
+
+        if not longest_str:
+            return ""
+        return longest_str
+
+
+Solution.longestCommonPrefix(["flower","flow","flight"])
