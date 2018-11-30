@@ -28,20 +28,43 @@ print(','.join(c.get_children('A') or []))
 Running this code should display 'B,C' or 'C,B'.
 
 Time : (more than) 60 min
-Tests : 2 pass / ? fail
-Example case: Correct answer
-Simple case: ?
-KeyError is raised when needed: Correct answer
+Tests : 3 pass ?
+    Example case: Correct answer
+    Simple case: ?
+    KeyError is raised when needed: Correct answer
 
 
 * Subject - New definition of existing algorithm concept
+             (Define Tree with dict not with variable as it used to do)
+              e.g. self.left = None, self.right = None (X)
 * Learning
     1. The usage of hash table in the complex situation
         (There was a hint of 'hash table' in the problem description,
          which is 'KeyError')
+
     2. 'Make raise error in your code' could mean I really had to raise an error if it is needed.
 
 """
+
+
+class CategoryTree:
+
+    def __init__(self):
+        pass
+
+    def add_category(self, category, parent):
+        pass
+
+    def get_children(self, parent):
+        return []
+
+
+c = CategoryTree()
+c.add_category('A', None)
+c.add_category('B', 'A')
+c.add_category('C', 'A')
+# print(','.join(c.get_children('A') or []))
+
 
 
 # class CategoryTree:
@@ -97,10 +120,10 @@ KeyError is raised when needed: Correct answer
 # c.add_category('B', 'A')
 # c.add_category('C', 'A')
 #
-# # Keyerror 1
+# # KeyError 1
 # # c.add_category('C', 'A')
 #
-# # Keyerror 2
+# # KeyError 2
 # # c.add_category('D', 'E')
 # # c.add_category('D', 'E')
 #
@@ -126,14 +149,14 @@ KeyError is raised when needed: Correct answer
 181112 Review
 
 Time : 18 min
-Tests : 1 pass / ? fail
-Example case: Correct answer
-Simple case: ?
-KeyError is raised when needed: Wrong answer
+Tests : 1 pass / 2 fail
+    Example case: Correct answer
+    Simple case: Wrong answer
+    KeyError is raised when needed: Wrong answer
 """
 
-
 # Fail - unique name
+
 # class CategoryTree:
 #
 #     def __init__(self):
@@ -162,10 +185,16 @@ KeyError is raised when needed: Wrong answer
 #         return self.category_dict[path]
 
 
-# This code might pass the 4 tests.
-# But, because even node with non-exist parent node will become a parent node
-# 'self.category_dict[category] = []'
-# with this code, it could make a problem, it this code is used in a real program
+"""
+181112 Review
+
+Time : 18 min
+Tests : 3 pass ?
+Example case: Correct answer
+Simple case: ?
+KeyError is raised when needed: Correct answer
+"""
+
 
 class CategoryTree:
 
@@ -196,15 +225,89 @@ c.add_category('A', None)
 c.add_category('B', 'A')
 c.add_category('C', 'A')
 
-# Keyerror 1 - duplicate
+# KeyError 1 - duplicate
 # c.add_category('C', 'A')
 
-# Keyerror 2 - no parent
+# KeyError 2 - no parent
 # c.add_category('D', 'E')
 
 # KeyError 3 - unique name
 c.add_category('D', 'C')
 # c.add_category('D', 'B')
+
+# Simple case
+c.add_category('G', 'B')
+c.add_category('H', 'B')
+
+
+print(','.join(c.get_children('A') or []))
+print(','.join(c.get_children('B') or []))
+
+
+"""
+181130 Review
+
+Time : 25 min
+Tests : 3 pass ?
+Example case: Correct answer
+Simple case: ?
+KeyError is raised when needed: Correct answer
+"""
+
+# 181130
+# By using the way of early exit, the code becomes more readable.
+
+class CategoryTree:
+
+    def __init__(self):
+        # self.name = None
+        # self.parent = None
+        self.category_dict = {}
+
+    def add_category(self, category, parent):
+        # self.name = category
+        # self.parent = parent
+
+        # root node
+        if parent is None:
+            self.category_dict[category] = []
+            return
+
+        # KeyError1 - no parents
+        if not self.category_dict.get(parent) and self.category_dict.get(parent) != []:
+            raise KeyError('Parent does not exist!')
+
+        # KeyError2 - duplicate
+
+        # 181130
+        # This code is not enough for unique validation
+        # if category in self.category_dict[parent]:
+
+        if category in self.category_dict:
+            raise KeyError('Category already exists!')
+
+        self.category_dict[parent].append(category)
+        self.category_dict[category] = []
+
+    def get_children(self, parent):
+        return self.category_dict[parent]
+
+
+print()
+c = CategoryTree()
+c.add_category('A', None)
+c.add_category('B', 'A')
+c.add_category('C', 'A')
+
+# KeyError 1 - duplicate
+# c.add_category('C', 'A')
+
+# KeyError 2 - no parent
+# c.add_category('D', 'E')
+
+# KeyError 3 - unique name
+# c.add_category('D', 'C')
+c.add_category('D', 'B')
 
 # Simple case
 c.add_category('G', 'B')

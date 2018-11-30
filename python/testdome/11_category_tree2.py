@@ -1,5 +1,6 @@
 
 # BEST PRACTICE
+# https://www.savour-it.com/posts/2018-01-04-hyper-connect1/
 
 
 class CategoryTree():
