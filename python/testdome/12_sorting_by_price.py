@@ -46,10 +46,12 @@ print(Products.sort_by_price_ascending(
 
 
 * Subject - sorting
+
 * Learning
     1. sorting through two ways
-        - Insert into new sorted list (V, prefer)
+        - Insert into new sorted list (v, prefer)
         - Swapping
+
     2. read JSON file in python using json function
         - json.loads(<json-string>)
         - json.dumps(<list with dicts>)

@@ -40,7 +40,7 @@ Tests: 4 pass / 0 fail
 * Subject - Comparing with three options
 
 * Learning
-    1. Do coding as you write a pseudo code
+    1. Do coding as you write a pseudo code(inner function)
     2. The understanding of new function e.g Counter()
     3. Mistake when make a new sorted list by 'insert' function
 

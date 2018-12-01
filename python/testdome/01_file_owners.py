@@ -21,7 +21,7 @@ Tests: 3 pass / 0 fail
 * Subject - Swapping key and value of dict
 
 * Learning
-    1. Make vlaue of dict as list to add more than one data
+    1. Make value of dict as list to add more than one data
 
 """
 

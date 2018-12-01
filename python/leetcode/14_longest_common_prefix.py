@@ -23,8 +23,9 @@ All given inputs are in lowercase letters a-z.
 Time : 16 min
 
 * Subject - Find common things among three objects 
+
 * Learning
-    1. Pseudo code
+    1. Pseudo code(inner function)
     2. Find common things among three objects
     
 """
@@ -69,11 +70,12 @@ if __name__ == '__main__':
 
 Time : 30 min
 
-"""
+The above answer using inner function is easier to understand.
+It took too much time to write the code below because it was complex.
 
-# 181130
-# The code above using inner function is easier to understand.
-# It took too much time to write the code below.
+Also, I made a redundant code in line 107.
+
+"""
 
 
 class Solution:

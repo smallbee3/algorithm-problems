@@ -19,7 +19,7 @@ following pairs of indices:
     1. When put list's index, element into dictionary,
        Key : element , Value : [index]
        (Because if put element into Value, No way to find the value.
-        So, put element into Value, but make index as a list for duplicate issue.)
+        So, put element into Value, but input indexes as a list for duplicate issue.)
 
     2. Do not use "list.index(x)", "x in [list]" etc on a problem with time efficiency issue
 

@@ -23,15 +23,16 @@ Assume we are dealing with an environment which could only store integers within
 Time : 30 min
 
 * Subject - reverse 32-bit digit
+
 * Learning
     1. 32 bit number
     2. minus integer <-> string
     3. handling minus number
-    4. number range point (when number is reversed)
+    4. number range changes when reversed (when number is reversed)
 
     181130
     5. make a reversed number with str
-        e.g. num_str_reverse = i + num_str_reverse
+        e.g. num_str_reverse = ''; num_str_reverse = i + num_str_reverse
 
 """
 
@@ -91,11 +92,10 @@ if __name__ == '__main__':
 
 Time : 20 min
 
-"""
+I like the code above which makes reversed number with str
+The way using list indexing below is slower
 
-# 181130
-# I like the code above which makes reversed number with str
-# The way using list indexing below is slower
+"""
 
 
 # class Solution:

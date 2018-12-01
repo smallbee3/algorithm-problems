@@ -28,6 +28,7 @@ Tests: 2 pass / 1 fail
 
 
 * Subject - Closure, Decorator(core concept)
+
 * Learning
     1. passing func to *args (tuple)
 

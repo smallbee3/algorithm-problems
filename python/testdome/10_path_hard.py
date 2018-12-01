@@ -36,6 +36,7 @@ Tests: 3 pass / 1 fail
 
 * Learning
     1. The usage of regex
+
     2. change directory functions type
         cd /<directory>
         cd .. (cd ...)
