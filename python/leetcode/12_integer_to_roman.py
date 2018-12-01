@@ -50,13 +50,16 @@ Time : 70 min
 
 * Subject - Introducing new concept into coding test
 * Learning
-    1. Change index when the order is reverse
+    1. Change the index when the order is reverse
+        181201
+        No need to change the index, just use list slicing (step) 
+    
     2. Read carefully
 
 """
 
 
-# I II III IV V VI VII VIII IX
+# I II III IV V VI VII VIII IX X
 
 
 class Solution:
@@ -124,3 +127,96 @@ if __name__ == '__main__':
 
     solution = Solution()
     print(solution.intToRoman(input_data))
+
+
+"""
+
+181201 Review
+
+Time : 33 min
+
+To rotate str list from the last index, the code above use this way.
+
+    (1)
+    for idx, i in enumerate(str(num)):
+        idx = len(str(num)) - idx - 1
+
+But, I found the better and simpler way using list slicing.
+
+    (2)
+    for idx, i in enumerate(str_num[::-1]):
+
+
+"""
+
+
+
+class Solution:
+    def intToRoman(self, num):
+        """
+        :type num: int
+        :rtype: str
+        """
+
+        def turn_int_to_roman(idx, i):
+
+            if idx == 0:
+                symbol_1 = 'I'
+                symbol_5 = 'V'
+                symbol_10 = 'X'
+
+            elif idx == 1:
+                symbol_1 = 'X'
+                symbol_5 = 'L'
+                symbol_10 = 'C'
+
+            elif idx == 2:
+                symbol_1 = 'C'
+                symbol_5 = 'D'
+                symbol_10 = 'M'
+
+            else: # idx == 3:
+                symbol_1 = 'M'
+                symbol_5 = None
+                symbol_10 = None
+
+            roman_digit = ''
+
+            if i < 4:
+                roman_digit += symbol_1 * i
+
+            elif i == 4:
+                roman_digit += symbol_1 + symbol_5
+
+            elif i == 5:
+                roman_digit += symbol_5
+
+            elif i < 9:
+                roman_digit += symbol_5 + symbol_1 * (i - 5)
+
+            elif i == 9:
+                roman_digit += symbol_1 + symbol_10
+
+            return roman_digit
+
+        str_num = str(num)
+
+        roman = ''
+        for idx, i in enumerate(str_num[::-1]):
+            result = turn_int_to_roman(idx, int(i))
+            roman = result + roman
+
+        return roman
+
+
+if __name__ == '__main__':
+
+    # input = 3
+    # input = 4
+    # input = 9
+    # input = 58
+    input = 68
+    # input = 1994
+
+    solution = Solution()
+    print(solution.intToRoman(input))
