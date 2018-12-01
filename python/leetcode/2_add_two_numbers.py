@@ -19,9 +19,13 @@ Time : (more than) 60 min
 
 * Subject - Linked List
 * Learning
-    1. Should make from the 'last node' when making 'Linked List node' in python
+    1. Should start from the 'last node' when making linked list in python
     2. The place of 'break' when make a for loop for linked list
-
+        181201
+        -> Just using 'while node:' instead
+    
+    3. Power of pseudo code, simple
+    
 """
 
 # Definition for singly-linked list.
@@ -132,4 +136,88 @@ if __name__ == '__main__':
     l5.next = l6
 
     solution = Solution()
-    print(solution.addTwoNumbers(l1, l4))
+    solution.addTwoNumbers(l1, l4)
+
+
+"""
+
+181201 Review
+
+Time : 13 min
+
+The code below is simpler than the above in two ways.
+First, the one above make a non reverse number by multiplying 10**i.
+       it is not easy to think instantly.
+Second, no need to make a last node outside of loop like 'node = ListNode(sum_str[0])'
+      There is better way as the code below using 'prev_node=None'
+
+"""
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+
+        def make_num(node):
+            str_num = ''
+            while node:
+                str_num = str(node.val) + str_num
+                node = node.next
+
+            return int(str_num)
+
+        num1 = make_num(l1)
+        num2 = make_num(l2)
+
+        num3_str = str(num1 + num2)
+
+        node = None
+        prev_node = None
+        for i in num3_str:
+            node = ListNode(int(i))
+
+            if prev_node:
+                node.next = prev_node
+            prev_node = node
+
+        return node
+
+
+def make_node(num):
+
+    str_num = str(num)
+
+    node = None
+    prev_node = None
+    for i in str_num:
+        node = ListNode(int(i))
+
+        if prev_node:
+            node.next = prev_node
+        prev_node = node
+
+    return node
+
+
+num1 = 342
+num2 = 465
+l1 = make_node(num1)
+l2 = make_node(num2)
+
+
+solution = Solution()
+l3 = solution.addTwoNumbers(l1, l2)
+
+node = l3
+while node:
+    print(node.val, end=' -> ' if node.next is not None else '')
+    node = node.next
