@@ -132,4 +132,89 @@ if __name__ == '__main__':
 
     solution = Solution()
     solution.mergeTwoLists(l1, l2)
-    
+
+
+"""
+
+181201 Review
+
+Time : 13 min
+
+"""
+
+
+# Definition for singly-linked list.
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+class Solution:
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        list1 = []
+        list2 = []
+
+        node = l1
+        while node:
+            list1.append(node.val)
+            node = node.next
+
+        node = l2
+        while node:
+            list2.append(node.val)
+            node = node.next
+
+        list3 = sorted(list1 + list2)
+
+        node = None
+        pre_node = None
+        for i in list3[::-1]:
+            node = ListNode(i)
+            if pre_node:
+                node.next = pre_node
+            pre_node = node
+
+        return node
+
+
+if __name__ == '__main__':
+
+    def print_linked_list(node):
+        while node:
+            print(node.val, end='->' if node.next is not None else '')
+            node = node.next
+
+    def make_linked_list(num):
+
+        str_num = str(num)
+
+        node = None
+        pre_node = None
+        for i in str_num[::-1]:
+            node = ListNode(int(i))
+            if pre_node:
+
+                # This one mistake costs 30 minutes !
+                # node = node.next
+                node.next = pre_node
+            pre_node = node
+
+        return node
+
+
+    input1 = 124
+    input2 = 134
+    l1 = make_linked_list(input1)
+    l2 = make_linked_list(input2)
+
+    solution = Solution()
+    result = solution.mergeTwoLists(l1, l2)
+
+    print_linked_list(result)
