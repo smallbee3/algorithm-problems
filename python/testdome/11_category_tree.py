@@ -282,7 +282,7 @@ class CategoryTree:
         # 181130
         # This code is not enough for unique validation
         # if category in self.category_dict[parent]:
-
+        # ->
         if category in self.category_dict:
             raise KeyError('Category already exists!')
 

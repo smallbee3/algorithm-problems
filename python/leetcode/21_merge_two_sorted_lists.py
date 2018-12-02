@@ -11,6 +11,24 @@ Output: 1->1->2->3->4->4
 
 """
 
+"""
+181118
+
+(1) Runtime Error
+Line 45: AttributeError: 'NoneType' object has no attribute 'val'
+
+>> while True 
+    -> while node:
+
+
+(2) Wrong Answer
+Output: [(5, 1),(4, 1),(3, 2),(2, 3),(1, 4),(0, 4)]
+Expected: [1,1,2,3,4,4]
+
+>> for i in <list> 
+    -> for idx, i in enumerate(<list>):
+
+"""
 
 # Definition for singly-linked list.
 import random
@@ -49,33 +67,44 @@ class Solution:
                 return quick_sort(a) + [arr[pivot]] + quick_sort(b)
 
         def print_node(l):
-            while True:
-                print(l.val, end=' -> ') if l.next else print(l.val)
-                if l.next is None:
-                    break
+            while l:
+                print(l.val, end='->') if l.next else print(l.val)
                 l = l.next
 
-        # print_node(l1)
-        # print_node(l2)
-
-        def node_to_list(l):
+        def node_to_list(node):
             node_list = []
-            while True:
-                node_list.append(l.val)
-                if l.next is None:
-                    return node_list
-                l = l.next
+
+            # 181202 The mistake found
+            # 'while True' allow None type value pass through
+            # so, None type value made an error at 'node.val'
+
+            # while True:
+            #     node_list.append(node.val)
+            #     if node.next is None:
+            #         return node_list
+            #     node = node.next
+            while node:
+                node_list.append(node.val)
+                node = node.next
+            return node_list
 
         l1_list = node_to_list(l1)
         l2_list = node_to_list(l2)
-
-        l3_list = l1_list + l2_list
-        l3_list = quick_sort(l3_list)
-        # print(l3_list)
+        l3_list = quick_sort(l1_list + l2_list)
 
         node = None
-        for i in l3_list:
-            if i == 0:
+
+        # 181202 The mistake found (2)
+        # for i in enumerate(l3_list):
+        #     if i == 0:
+        #         node = ListNode(i)
+        #         continue
+        #     prev_node = ListNode(i)
+        #     prev_node.next = node
+        #     node = prev_node
+
+        for idx, i in enumerate(l3_list):
+            if idx == 0:
                 node = ListNode(i)
                 continue
             prev_node = ListNode(i)
@@ -83,7 +112,7 @@ class Solution:
             node = prev_node
 
         l3 = node
-        # print_node(l3)
+        print_node(l3)
         return l3
 
 
@@ -102,4 +131,5 @@ if __name__ == '__main__':
     l2_2.next = l2_3
 
     solution = Solution()
-    print(solution.mergeTwoLists(l1, l2))
+    solution.mergeTwoLists(l1, l2)
+    

@@ -28,7 +28,7 @@ Time : 40 min
 * Learning
     1. pseudo code(inner function)
         181201
-        No, at least not with problem
+        No, at least not with this problem
     
     2. Use hash table when facing time efficiency problem
 
@@ -119,7 +119,7 @@ Time : 24 min
 I like the code below because it is simpler
 (Sometimes, making inner function makes it more complex to solve the problem.)
 
-Example why I made code with O(n²)
+This is an example why I made code with O(n²)
 e.g.
 abcaefghi
 387654321
