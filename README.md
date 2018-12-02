@@ -2,7 +2,44 @@
 # A Few Tips For Coding Test
 <br>
 
-## Algorithm
+
+
+## The Types Of Algorithm Problems
+
+
+### 1. Complex or difficult explanation
+There is no way except read carefully and repeat reading till you fully understand. \
+You can search the internet for the words or concept you haven't known.
+
+e.g. \
+Roman numeric character \
+Count() used in the problem \
+...
+
+<br>
+
+
+### 2. Time limit issue
+When facing 'time limit exceeded' issue, it can be solved with hash table in the most case. \
+If it is not, then you have to make O notation smaller. \
+e.g. O(n³) -> O(n²)  or  O(n²) -> O(n)
+
+<br>
+
+
+### 3. Many restrictions on the problem
+To solve the each restriction, it takes quite a long time. \
+And also, you can make mistake during pass the restriction. \
+If you become so confused, then don't be. Because it is what problem seek after!
+
+<br>
+<br>
+
+
+
+
+
+## Algorithm Tips
 
 ### 1. Read carefully
 
@@ -43,7 +80,8 @@ One tip is prefer hash table to list
 ### 5. Pseudo code (Step by step)
 
 When you think, think as you write a pseudo code on the board\
-This means separate the process, no matter how complex the problem is.
+This means separate the process, no matter how complex the problem is.\
+In different words, it can be said as 'divide and conquer algorithm'
 
 <br>
 
@@ -72,18 +110,18 @@ next_song -> node
 
 
 
-## SQL
+## SQL Tips
 
-### 1. Read carefully (2)
-
-<br>
-
-
-### 2. Debugging (2)
+### 1. Read carefully
 
 <br>
 
 
-### 3. There is a hint in a problem(2)
+### 2. Debugging
+
+<br>
+
+
+### 3. There is a hint in a problem
 
 <br>
