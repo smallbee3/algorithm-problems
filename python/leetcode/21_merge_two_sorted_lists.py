@@ -17,16 +17,18 @@ Output: 1->1->2->3->4->4
 (1) Runtime Error
 Line 45: AttributeError: 'NoneType' object has no attribute 'val'
 
->> while True 
-    -> while node:
+>>
+while True 
+-> while node:
 
 
 (2) Wrong Answer
 Output: [(5, 1),(4, 1),(3, 2),(2, 3),(1, 4),(0, 4)]
 Expected: [1,1,2,3,4,4]
 
->> for i in <list> 
-    -> for idx, i in enumerate(<list>):
+>> 
+for i in <list> 
+-> for idx, i in enumerate(<list>):
 
 """
 

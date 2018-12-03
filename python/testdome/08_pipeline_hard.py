@@ -32,6 +32,8 @@ Tests: 2 pass / 1 fail
 * Learning
     1. passing func to *args (tuple)
 
+    2. solving the UnBoundError
+
 """
 
 

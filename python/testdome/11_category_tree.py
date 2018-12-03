@@ -190,9 +190,10 @@ Tests : 1 pass / 2 fail
 
 Time : 18 min
 Tests : 3 pass ?
-Example case: Correct answer
-Simple case: ?
-KeyError is raised when needed: Correct answer
+    Example case: Correct answer
+    Simple case: ?
+    KeyError is raised when needed: Correct answer
+
 """
 
 
@@ -245,17 +246,19 @@ print(','.join(c.get_children('B') or []))
 
 
 """
-181130 Review
+181130 Review 2
 
 Time : 25 min
 Tests : 3 pass ?
-Example case: Correct answer
-Simple case: ?
-KeyError is raised when needed: Correct answer
+    Example case: Correct answer
+    Simple case: ?
+    KeyError is raised when needed: Correct answer
+
 """
 
 # 181130
 # By using the way of early exit, the code becomes more readable.
+
 
 class CategoryTree:
 
