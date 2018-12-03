@@ -79,41 +79,41 @@ Learning
     1. recursion + recursion
     2. the usage of *args
 
+3) recursion with *args
+
 """
 
-# 3) recursion with *args
 
-
-def does_x_contain_seven(x):
-
-    if (x - 7) % 10 == 0:
-        return True
-
-    if x < 10:
-        return False
-
-    return does_x_contain_seven(x // 10)
-
-
-def pingpong(x, *args):
-
-    if not args:
-        if x == 1:
-            return 1
-        return pingpong(x, 2, 2, 1)
-
-    if args[0] == x:
-        return args[1]
-
-    # multiple of seven
-    if args[0] % 7 == 0:
-        return pingpong(x, args[0] + 1, args[1] - args[2], -args[2])
-
-    # with seven
-    if does_x_contain_seven(args[0]):
-        return pingpong(x, args[0] + 1, args[1] - args[2], -args[2])
-
-    return pingpong(x, args[0] + 1, args[1] + args[2], args[2])
+# def does_x_contain_seven(x):
+#
+#     if (x - 7) % 10 == 0:
+#         return True
+#
+#     if x < 10:
+#         return False
+#
+#     return does_x_contain_seven(x // 10)
+#
+#
+# def pingpong(x, *args):
+#
+#     if not args:
+#         if x == 1:
+#             return 1
+#         return pingpong(x, 2, 2, 1)
+#
+#     if args[0] == x:
+#         return args[1]
+#
+#     # multiple of seven
+#     if args[0] % 7 == 0:
+#         return pingpong(x, args[0] + 1, args[1] - args[2], -args[2])
+#
+#     # with seven
+#     if does_x_contain_seven(args[0]):
+#         return pingpong(x, args[0] + 1, args[1] - args[2], -args[2])
+#
+#     return pingpong(x, args[0] + 1, args[1] + args[2], args[2])
 
 
 """
@@ -121,45 +121,97 @@ def pingpong(x, *args):
 
 Time : 30 minutes
 
+4) recursion with dict
+
 """
 
-# 4) recursion with dict
+
+# def does_x_contain_seven(x):
+#
+#     if (x - 7) % 10 == 0:
+#         return True
+#
+#     if x < 10:
+#         return False
+#
+#     return does_x_contain_seven(x // 10)
+#
+#
+# def pingpong(x):
+#
+#     if not isinstance(x, dict):
+#         if x == 1:
+#             return 1
+#         return pingpong({x: {0: 2, 1: 2, 2: 1}})
+#
+#     # print(list(x.keys())[0])
+#     # print(x[list(x.keys())[0]])
+#     # print(x[list(x.keys())[0]][0])
+#
+#     if list(x.keys())[0] == x[list(x.keys())[0]][0]:
+#         return x[list(x.keys())[0]][1]
+#
+#     # multiple of seven
+#     if x[list(x.keys())[0]][0] % 7 == 0:
+#         return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}})
+#
+#     # with seven
+#     if does_x_contain_seven(x[list(x.keys())[0]][0]):
+#         return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}})
+#
+#     return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] + x[list(x.keys())[0]][2], 2: x[list(x.keys())[0]][2]}})
+
+
+"""
+181203 Review
+
+Time : 7 minutes
+
+5) With while loop
+
+"""
 
 
 def does_x_contain_seven(x):
 
-    if (x - 7) % 10 == 0:
-        return True
+    while x:
+        if (x - 7) % 10 == 0:
+            return True
 
-    if x < 10:
-        return False
+        if x < 10:
+            return False
 
-    return does_x_contain_seven(x // 10)
+        x = does_x_contain_seven(x // 10)
 
 
 def pingpong(x):
 
-    if not isinstance(x, dict):
-        if x == 1:
-            return 1
-        return pingpong({x: {0: 2, 1: 2, 2: 1}})
+    if x == 1:
+        return 1
 
-    # print(list(x.keys())[0])
-    # print(x[list(x.keys())[0]])
-    # print(x[list(x.keys())[0]][0])
+    while x:
 
-    if list(x.keys())[0] == x[list(x.keys())[0]][0]:
-        return x[list(x.keys())[0]][1]
+        if not isinstance(x, dict):
+            if x == 1:
+                return 1
+            x = {x: {0: 2, 1: 2, 2: 1}}
+            continue
+        # print(list(x.keys())[0])
+        # print(x[list(x.keys())[0]])
+        # print(x[list(x.keys())[0]][0])
 
-    # multiple of seven
-    if x[list(x.keys())[0]][0] % 7 == 0:
-        return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}})
+        if list(x.keys())[0] == x[list(x.keys())[0]][0]:
+            return x[list(x.keys())[0]][1]
 
-    # with seven
-    if does_x_contain_seven(x[list(x.keys())[0]][0]):
-        return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}})
-
-    return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] + x[list(x.keys())[0]][2], 2: x[list(x.keys())[0]][2]}})
+        # multiple of seven
+        if x[list(x.keys())[0]][0] % 7 == 0:
+            x = {list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}}
+            continue
+        # with seven
+        if does_x_contain_seven(x[list(x.keys())[0]][0]):
+            x = {list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}}
+            continue
+        x = {list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] + x[list(x.keys())[0]][2], 2: x[list(x.keys())[0]][2]}}
 
 
 if __name__ == '__main__':
@@ -189,4 +241,13 @@ if __name__ == '__main__':
     print(f'expected: 2 | result: {result}')
 
     result = pingpong(100)
+    print(f'expected: 6 | result: {result}')
+
+    result = pingpong(996)
+    print(f'expected: 2 | result: {result}')
+
+    result = pingpong(1000)
+    print(f'expected: 0 | result: {result}')
+
+    result = pingpong(10000)
     print(f'expected: 2 | result: {result}')
