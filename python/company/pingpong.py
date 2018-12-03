@@ -116,6 +116,52 @@ def pingpong(x, *args):
     return pingpong(x, args[0] + 1, args[1] + args[2], args[2])
 
 
+"""
+181203 Review
+
+Time : 30 minutes
+
+"""
+
+# 4) recursion with dict
+
+
+def does_x_contain_seven(x):
+
+    if (x - 7) % 10 == 0:
+        return True
+
+    if x < 10:
+        return False
+
+    return does_x_contain_seven(x // 10)
+
+
+def pingpong(x):
+
+    if not isinstance(x, dict):
+        if x == 1:
+            return 1
+        return pingpong({x: {0: 2, 1: 2, 2: 1}})
+
+    # print(list(x.keys())[0])
+    # print(x[list(x.keys())[0]])
+    # print(x[list(x.keys())[0]][0])
+
+    if list(x.keys())[0] == x[list(x.keys())[0]][0]:
+        return x[list(x.keys())[0]][1]
+
+    # multiple of seven
+    if x[list(x.keys())[0]][0] % 7 == 0:
+        return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}})
+
+    # with seven
+    if does_x_contain_seven(x[list(x.keys())[0]][0]):
+        return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] - x[list(x.keys())[0]][2], 2: -x[list(x.keys())[0]][2]}})
+
+    return pingpong({list(x.keys())[0]: {0: x[list(x.keys())[0]][0]+1, 1: x[list(x.keys())[0]][1] + x[list(x.keys())[0]][2], 2: x[list(x.keys())[0]][2]}})
+
+
 if __name__ == '__main__':
 
     result = pingpong(1)
