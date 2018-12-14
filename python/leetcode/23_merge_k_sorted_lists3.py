@@ -59,18 +59,21 @@ class Solution:
         #         del lists[idx]
 
         # 2) check from the last
-        # for i in range(len(lists)):
-        #     idx = len(lists) - 1 - i
-        #     if not isinstance(lists[idx], ListNode):
-        #         del lists[idx]
+        length = len(lists)
+        for i in range(length):
+            idx = length - 1 - i
+            if not isinstance(lists[idx], ListNode):
+                del lists[idx]
 
         # 3) make a element list to remove
-        remove_list = []
-        for idx, i in enumerate(lists):
-            if not isinstance(i, ListNode):
-                remove_list.insert(0, idx)
-        for i in remove_list:
-            del lists[i]
+        # remove_list = []
+        # for idx, i in enumerate(lists):
+        #     if not isinstance(i, ListNode):
+        #         remove_list.insert(0, idx)
+        # for i in remove_list:
+        #     del lists[i]
+
+        # 2) < 3) because ... ?
 
         # Time efficiency issue
         lists_list = []
@@ -131,7 +134,7 @@ if __name__ == '__main__':
 
     node_list.append([])
 
-    result = Solution.mergeKLists(node_list)
+    # result = Solution.mergeKLists(node_list)
 
     # 1) exception handling for [[]]
     # result = Solution.mergeKLists([[]])
