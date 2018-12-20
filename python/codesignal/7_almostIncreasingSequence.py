@@ -35,7 +35,7 @@ Leaning
 """
 
 
-def almost_increasing_sequence(sequence):
+def almostIncreasingSequence(sequence):
 
     count_of_decreasing = 0
     for i in range(len(sequence)-1):
@@ -47,8 +47,9 @@ def almost_increasing_sequence(sequence):
             if i == 0:
                 continue
 
-            # case when remove sequence[i+1
-            if i != 0 and sequence[i-1] < sequence[i+1]:
+            # case when remove sequence[i+1]
+            # if i != 0 and sequence[i-1] < sequence[i+1]:
+            if sequence[i-1] < sequence[i+1]:
                 continue
 
             # case when remove sequence[i]
@@ -56,7 +57,8 @@ def almost_increasing_sequence(sequence):
                 continue
 
             # [3, 5, 67, 98, 3]
-            if i == len(sequence)-2 and sequence[i-2] < sequence[i-1]:
+            # if i == len(sequence)-2 and sequence[i-2] < sequence[i-1]:
+            if i == len(sequence)-2:
                 continue
 
             count_of_decreasing += 1
@@ -66,12 +68,26 @@ def almost_increasing_sequence(sequence):
     return True
 
 
-# sequence = [40, 50, 60, 10, 20, 30]
-# sequence = [1, 1]
-# sequence = [1, 3, 2, 1]
-# sequence = [1, 2, 1, 2]
-# sequence = [1, 2, 5, 3, 5]
-sequence = [3, 5, 67, 98, 3]
+sequence = [40, 50, 60, 10, 20, 30]
+result = almostIncreasingSequence(sequence)
+print(result)
 
-result = almost_increasing_sequence(sequence)
+sequence = [1, 1]
+result = almostIncreasingSequence(sequence)
+print(result)
+
+sequence = [1, 3, 2, 1]
+result = almostIncreasingSequence(sequence)
+print(result)
+
+sequence = [1, 2, 1, 2]
+result = almostIncreasingSequence(sequence)
+print(result)
+
+sequence = [1, 2, 5, 3, 5]
+result = almostIncreasingSequence(sequence)
+print(result)
+
+sequence = [3, 5, 67, 98, 3]
+result = almostIncreasingSequence(sequence)
 print(result)
