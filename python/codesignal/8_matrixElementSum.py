@@ -65,7 +65,7 @@ def matrixElementsSum(matrix):
     #             for k in range(i, len(matrix)):
     #                 matrix[k][j] = 0
     #
-    # I even gave up writing this code because it is already takes O(n³)
+    # I even gave up finishing writing this code because it is already takes O(n³)
 
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):

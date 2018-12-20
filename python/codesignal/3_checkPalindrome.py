@@ -26,9 +26,10 @@ Subject - Palindrome
 
 Learning
     1. Compare string with reverse index
-    2. The usage of 'reversed' method (but, reverse index is good enough
+    2. The usage of 'reversed' method (but, reverse index is good enough)
 
 """
+
 
 def checkPalindrome1(inputString):
 
