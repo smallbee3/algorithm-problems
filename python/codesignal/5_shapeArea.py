@@ -26,6 +26,11 @@ Subject - Problem that needs mathematical thinking
 
 """
 
+# 1
+# 1 + 1*4
+# 1 + 1*4 + 2*4
+# ...
+
 
 def shapeArea(n):
     output = 0
@@ -37,11 +42,14 @@ def shapeArea(n):
     return output
 
 
-ret = shapeArea(1)
-print(ret)
+# ret = shapeArea(1)
+# print(ret)
 
-ret = shapeArea(2)
-print(ret)
-
-ret = shapeArea(3)
+# ret = shapeArea(2)
+# print(ret)
+#
+# ret = shapeArea(3)
+# print(ret)
+#
+ret = shapeArea(4)
 print(ret)

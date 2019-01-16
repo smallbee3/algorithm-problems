@@ -52,6 +52,17 @@ Time : 17 min
 Subject - Consider two cases in one operation 
           (1 - sum, 2 - change the price of current room)
 
+Learning
+    1. low and column in [[1, 1, 1, x], [x, 5, x, x], [x, 1, x, x]] 
+
+        len(matrix) -> low, len(matrix[i]) -> column 
+
+    2. Step by step
+        e.g.
+        1) Changing all column value into '0' if '0' exist in the column -> Fail
+        2) Changing current column value into '0' if previous column element is '0' -> Success
+    
+
 """
 
 

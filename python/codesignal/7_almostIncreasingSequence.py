@@ -41,7 +41,6 @@ def almostIncreasingSequence(sequence):
     for i in range(len(sequence)-1):
         if sequence[i] >= sequence[i+1]:
             count_of_decreasing += 1
-            # if i != len(sequence)-2 and sequence[i] > sequence[i+2]:
 
             # [10, 1, 2, 3, 4, 5]
             if i == 0:
@@ -64,6 +63,29 @@ def almostIncreasingSequence(sequence):
             count_of_decreasing += 1
 
     if count_of_decreasing > 1:
+        return False
+    return True
+
+
+# 190116
+def almostIncreasingSequence2(sequence):
+    if len(sequence) < 3: return True
+
+    remove_count = 0
+    for i in range(len(sequence) - 1):
+        if sequence[i] >= sequence[i + 1]:
+            remove_count += 1
+            if i == 0:
+                continue
+            if i != 0 and sequence[i - 1] < sequence[i + 1]:
+                continue
+            if i != len(sequence) - 2 and sequence[i] < sequence[i + 2]:
+                continue
+            if i == len(sequence) - 2:
+                continue
+            remove_count += 1
+
+    if remove_count > 1:
         return False
     return True
 
