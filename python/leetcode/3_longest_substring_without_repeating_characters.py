@@ -26,11 +26,15 @@ Time : 40 min
 
 * Subject - 
 * Learning
-    1. pseudo code(inner function)
+    1. inner function
         181201
         No, at least not with this problem
     
     2. Use hash table when facing time efficiency problem
+
+    190117
+    3. But when using 'in' keyword, string is faster than hash table
+
 
 """
 
@@ -41,34 +45,36 @@ class Solution:
         :type s: str
         :rtype: int
         """
-        # 1) Misunderstood the problem
+
+        # 1) Use list -> Time Limit Exceeded (2700 ms)
 
         # longest_num = 0
-        # longest_str = ''
         # for idx, i in enumerate(s):
-        #     common_str = ''
+        #     common_list = []
         #     for j in s[idx:]:
-        #         if j in common_str:
+        #         if j in common_list:
         #             break
-        #         common_str += j
-        #
-        #     long = len(common_str)
+        #         common_list.append(j)
+        #     long = len(common_list)
         #     if long > longest_num:
         #         longest_num = long
-        #         longest_str = common_str
         #
-        # return longest_num, longest_str
+        # return longest_num
 
-        # 2) Use list -> Time Limit Exceeded
+        # 2) Use hash table -> pass (800 ms)
 
         # def find_longest_substring(idx):
-        #     common_list = []
+        #
+        #     # common_list = []
+        #     common_dict = {}
+        #     common_long = 0
         #     string = s[idx:]
         #     for i in string:
-        #         if i in common_list:
+        #         if common_dict.get(i):
         #             break
-        #         common_list.append(i)
-        #     return len(common_list)
+        #         common_dict[i] = 1
+        #         common_long += 1
+        #     return common_long
         #
         # longest_num = 0
         # for idx, i in enumerate(s):
@@ -78,93 +84,62 @@ class Solution:
         #
         # return longest_num
 
-        # 3) Use hash table -> pass
-
-        def find_longest_substring(idx):
-
-            # common_list = []
-            common_dict = {}
-            common_long = 0
-            string = s[idx:]
-            for i in string:
-                if common_dict.get(i):
-                    break
-                common_dict[i] = 1
-                common_long += 1
-            return common_long
-
-        longest_num = 0
-        for idx, i in enumerate(s):
-            result = find_longest_substring(idx)
-            if result > longest_num:
-                longest_num = result
-
-        return longest_num
-
-
-if __name__ == '__main__':
-
-    # input = 'abcabcbb'
-    # input = 'bbbbb'
-    input = 'pwwkew'
-    solution = Solution()
-    print(solution.lengthOfLongestSubstring(input))
-
-
-"""
-181201 Review
-
-Time : 24 min
-
-I like the code below because it is simpler
-(Sometimes, making inner function makes it more complex to solve the problem.)
-
-This is an example why I made code with O(n²)
-e.g.
-abcaefghi
-387654321
-
-"""
-
-
-class Solution:
-    def lengthOfLongestSubstring(self, s):
         """
-        :type s: str
-        :rtype: int
+        181201 Review
+
+        Time : 24 min
+
+        I like the code below because it is simpler
+        (Sometimes, making inner function makes it more complex to solve the problem.)
+
+        This is an example why I made code with O(n²)
+        e.g.
+        abcaefghi
+        387654321
+
         """
+
+        # 3) Use hash table (without inner function)
 
         # substring_longest = 0
         # for i in range(len(s)):
         #
         #     substring_long = 0
-        #     duplicate = []
+        #     duplicate = {}
         #
         #     for j in s[i:]:
-        #         if j in duplicate:
+        #         if duplicate.get(j):
         #             break
         #         substring_long += 1
-        #         duplicate += j
+        #         duplicate[j] = 1
         #     if substring_longest < substring_long:
         #         substring_longest = substring_long
         #
         # return substring_longest
 
-        substring_longest = 0
-        for i in range(len(s)):
+        """
+        190117 Review
+        
+        When it comes to using 'in' keyword, string is faster than hash table
+        """
 
-            substring_long = 0
-            duplicate = {}
+        # 4) Use String -> pass (470 ms)
 
-            for j in s[i:]:
-                if duplicate.get(j):
+        longest_num = 0
+        longest_str = ''
+        for idx, i in enumerate(s):
+            common_str = ''
+            for j in s[idx:]:
+                if j in common_str:
                     break
-                substring_long += 1
-                duplicate[j] = 1
-            if substring_longest < substring_long:
-                substring_longest = substring_long
+                common_str += j
 
-        return substring_longest
+            long = len(common_str)
+            if long > longest_num:
+                longest_num = long
+                longest_str = common_str
+
+        return longest_num, longest_str
 
 
 if __name__ == '__main__':

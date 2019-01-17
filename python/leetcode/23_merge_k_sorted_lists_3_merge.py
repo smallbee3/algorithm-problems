@@ -22,7 +22,7 @@ Learning
 
     4. The technique of remove element in the list
         check from the front    (x)
-        check from the last     (x)
+        check from the last     (o)
         make a element list to remove (o)
 
 """
@@ -75,7 +75,8 @@ class Solution:
 
         # 2) < 3) because ... ?
 
-        # Time efficiency issue
+        # 23_merge_k_sorted_lists_3_merge
+        # Merge every linked list
         lists_list = []
         if lists:
             for idx, node in enumerate(lists):
@@ -84,7 +85,6 @@ class Solution:
                     node = node.next
             lists_list.sort()
 
-        # while lists:
         while lists_list:
             max = find_the_max_node(lists_list)
             node = ListNode(max)

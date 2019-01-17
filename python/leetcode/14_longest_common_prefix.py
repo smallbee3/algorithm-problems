@@ -25,8 +25,8 @@ Time : 16 min
 * Subject - Find common things among three objects 
 
 * Learning
-    1. Pseudo code(inner function)
-    2. Find common things among three objects
+    1. Inner function
+    2. The way to compare three objects
     
 """
 
@@ -73,7 +73,7 @@ Time : 30 min
 The above answer using inner function is easier to understand.
 It took too much time to write the code below because it was complex.
 
-Also, I made a redundant code in line 107.
+Also, I made a redundant code in line 106.
 
 """
 

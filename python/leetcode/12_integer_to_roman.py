@@ -135,7 +135,7 @@ if __name__ == '__main__':
 
 Time : 33 min
 
-To rotate str list from the last index, the code above use this way.
+To enumerate index from the last digit, the code above use this way.
 
     (1)
     for idx, i in enumerate(str(num)):

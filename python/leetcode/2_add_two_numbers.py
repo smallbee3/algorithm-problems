@@ -48,26 +48,6 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
-        # l1_num = 0
-        # l2_num = 0
-        #
-        # for idx, i in enumerate(l1):
-        #     # if idx == 0:
-        #     #     l1_num += i
-        #     # else:
-        #     #     l1_num = l1_num + i * 10 ** idx
-        #     l1_num = l1_num + i * 10 ** idx if not idx == 0 else l1_num + i
-        #
-        # for idx, i in enumerate(l2):
-        #     l2_num = l2_num + i * 10 ** idx if not idx == 0 else l2_num + i
-        #
-        # sum = l1_num + l2_num
-        #
-        # sum_list = []
-        # for i in str(sum):
-        #     sum_list.insert(0, i)
-        #
-        # return sum_list
 
         def print_node(l):
             while True:

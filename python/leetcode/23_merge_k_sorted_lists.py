@@ -44,7 +44,6 @@ Time : 73 min
 """
 
 
-
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -77,7 +76,7 @@ class Solution:
 
             node = lists[max_idx]
             while True:
-                # 1 node
+                # 1 delete the last(maximum) node
                 if node.next is None:
                     # 181213 infinite loop problem
                     # del node
@@ -85,15 +84,12 @@ class Solution:
                     del lists[max_idx]
                     break
 
-                # 2 node
+                # 2 change 'next' link of a previous node None into 'None'
                 if node.next.next is None:
                     node.next = None
                     break
                 node = node.next
             return max
-
-        node = None
-        prev_node = None
 
         # '[]' exception handling
 
@@ -112,10 +108,13 @@ class Solution:
         remove_list = []
         for idx, i in enumerate(lists):
             if not isinstance(i, ListNode):
+                # insert to the first -> remove from the last index in the remove_list
                 remove_list.insert(0, idx)
         for i in remove_list:
             del lists[i]
 
+        node = None
+        prev_node = None
         while lists:
             max = find_the_max_node(lists)
             node = ListNode(max)
@@ -151,20 +150,20 @@ if __name__ == '__main__':
             node = node.next
 
 
-    node_list = []
-    node = make_node([1, 4, 5])
-    print_node(node)
-    node_list.append(node)
-
-    node = make_node([1, 3, 4])
-    print_node(node)
-    node_list.append(node)
-
-    node = make_node([2, 6])
-    print_node(node)
-    node_list.append(node)
-
-    node_list.append([])
+    # node_list = []
+    # node = make_node([1, 4, 5])
+    # print_node(node)
+    # node_list.append(node)
+    #
+    # node = make_node([1, 3, 4])
+    # print_node(node)
+    # node_list.append(node)
+    #
+    # node = make_node([2, 6])
+    # print_node(node)
+    # node_list.append(node)
+    #
+    # node_list.append([])
 
     # result = Solution.mergeKLists(node_list)
 
@@ -185,6 +184,8 @@ if __name__ == '__main__':
     node = make_node([-1])
     print_node(node)
     node_list.append(node)
+
+    print(node_list)
 
     result = Solution.mergeKLists(node_list)
 

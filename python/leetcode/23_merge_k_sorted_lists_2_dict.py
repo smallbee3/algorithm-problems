@@ -27,7 +27,7 @@ class Solution:
         :rtype: ListNode
         """
 
-        def find_the_max_node(lists):
+        def find_the_max_node(lists_dict):
             max = -float('inf')
             max_idx = None
 
@@ -38,13 +38,10 @@ class Solution:
                     max_idx = i
 
             lists_dict[max_idx].pop()
-            if not lists_dict[max_idx]:
+            if lists_dict[max_idx] == []:
                 del lists_dict[max_idx]
 
             return max
-
-        node = None
-        prev_node = None
 
         # '[]' exception handling
 
@@ -68,6 +65,9 @@ class Solution:
             del lists[i]
 
         # Time efficiency issue
+
+        # 23_merge_k_sorted_lists_2_dict
+        # Use dictionary
         lists_dict = {}
         if lists:
             for idx, node in enumerate(lists):
@@ -79,9 +79,12 @@ class Solution:
                     node = node.next
             print(lists_dict)
 
+        node = None
+        prev_node = None
+
         # while lists:
         while lists_dict:
-            max = find_the_max_node(lists)
+            max = find_the_max_node(lists_dict)
             node = ListNode(max)
 
             if prev_node:
@@ -130,10 +133,10 @@ if __name__ == '__main__':
 
     node_list.append([])
 
-    # result = Solution.mergeKLists(node_list)
+    result = Solution.mergeKLists(node_list)
 
     # 1) exception handling for [[]]
-    result = Solution.mergeKLists([[]])
+    # result = Solution.mergeKLists([[]])
 
     # 2) exception handling for [[], []]
     # result = Solution.mergeKLists([[], []])
