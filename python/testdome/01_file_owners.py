@@ -22,6 +22,7 @@ Tests: 3 pass / 0 fail
 
 * Learning
     1. Make value of dict as list to add more than one data
+    2. The usage of method "items()"
 
 """
 

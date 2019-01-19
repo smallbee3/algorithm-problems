@@ -92,11 +92,12 @@ class MergeNames:
         # 181129
         # I like the third solution which I made on November 11
         # 3) no set 3
-        #   - Using count, index function
+        #   - Using count, index method
         ret = names1 + names2
         for i in ret:
             while ret.count(i) > 1:
-                del ret[ret.index(i)]
+                # del ret[ret.index(i)]
+                ret.remove(i)
         return ret
 
 

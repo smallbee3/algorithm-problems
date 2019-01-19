@@ -24,56 +24,6 @@ Tests: 4 pass / 0 fail
 """
 
 
-class IceCreamMachine:
-
-    def __init__(self, ingredients, toppings):
-        self.ingredients = ingredients
-        self.toppings = toppings
-
-    def scoops(self):
-
-        icecream_with_toppings = []
-
-        """
-        Didn't read the question carefully!
-        """
-        for i in self.ingredients:
-            icecream_with_toppings.append([i])
-
-        for j in icecream_with_toppings:
-            for k in self.toppings:
-                j.append(k)
-
-        """
-        Key point : decide the order of nested for loop (toppings -> ingredients)
-        
-        181129
-        No, the order of loop doesn't matter.
-        """
-        # for i in self.toppings:
-        #     for j in self.ingredients:
-        #         icecream_with_toppings.append([j, i])
-
-        return icecream_with_toppings
-
-
-# icecream = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
-icecream = IceCreamMachine(["vanilla", "chocolate"], ["sauce1", "sauce2", "sauce3"])
-print(icecream.scoops())
-
-
-"""
-181111 Review
-
-Time: 5 min
-Tests: 4 pass / 0 fail
-  Example case: Correct answer
-  Various ingredients and one topping: Correct answer
-  Various ingredients and toppings: Correct answer
-  No ingredients and no toppings: Correct answer
-"""
-
-
 # class IceCreamMachine:
 #
 #     def __init__(self, ingredients, toppings):
@@ -82,16 +32,43 @@ Tests: 4 pass / 0 fail
 #
 #     def scoops(self):
 #
-#         result_list = []
+#         icecream_with_toppings = []
+#
+#         """
+#         Didn't read the question carefully!
+#         """
 #         for i in self.ingredients:
-#             for s in self.toppings:
-#                 result_list.append([i, s])
-#         return result_list
+#             icecream_with_toppings.append([i])
+#
+#         for j in icecream_with_toppings:
+#             for k in self.toppings:
+#                 j.append(k)
+#
+#         """
+#         Key point : decide the order of nested for loop (toppings -> ingredients)
+#
+#         181129
+#         No, the order of loop doesn't matter.
+#         """
+#         # for i in self.toppings:
+#         #     for j in self.ingredients:
+#         #         icecream_with_toppings.append([j, i])
+#
+#         return icecream_with_toppings
 #
 #
-# machine = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
-# print(machine.scoops())  # should print[['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']]
+# # icecream = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
+# icecream = IceCreamMachine(["vanilla", "chocolate"], ["sauce1", "sauce2", "sauce3"])
+# print(icecream.scoops())
 
+
+"""
+181111 Review
+
+Time: 5 min
+Tests: 4 pass / 0 fail
+
+"""
 
 """
 181129 Review 2
@@ -128,3 +105,22 @@ class IceCreamMachine:
 # machine = IceCreamMachine(["vanilla", "chocolate"], ["chocolate sauce"])
 machine = IceCreamMachine([], [])
 print(machine.scoops())  # should print[['vanilla', 'chocolate sauce'], ['chocolate', 'chocolate sauce']]
+
+
+"""
+190119 Review 3
+
+Double 'for comprehension'
+
+"""
+
+
+class IceCreamMachine:
+
+    def __init__(self, ingredients, toppings):
+        self.ingredients = ingredients
+        self.toppings = toppings
+
+    def scoops(self):
+        return [[a, b] for a in self.ingredients for b in self.toppings]
+
