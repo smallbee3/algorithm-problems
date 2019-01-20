@@ -195,13 +195,23 @@ class Song:
         """
         :returns: (bool) True if the playlist is repeating, False if not.
         """
-        dict1 = {}
-        node = self
-        while node:
-            if dict1.get(node.name):
+        # dict1 = {}
+        # node = self
+        # while node:
+        #     if dict1.get(node.name):
+        #         return True
+        #     dict1[node.name] = 1
+        #     node = node.next
+        # return False
+
+        # 190120
+        adict = {}
+        while self.next:
+            if adict.get(self.name):
                 return True
-            dict1[node.name] = 1
-            node = node.next
+            else:
+                adict[self.name] = 1
+                self = self.next
         return False
 
 

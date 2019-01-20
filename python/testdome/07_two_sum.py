@@ -239,10 +239,10 @@ class TwoSum:
 
             # 181129
             # 1) This also works !
-            # num in dict1:
+            if num in dict1:
 
             # 2)
-            if dict1.get(num):
+            # if dict1.get(num):
 
                 if i != num:
                     return dict1[i][0], dict1[num][0]
