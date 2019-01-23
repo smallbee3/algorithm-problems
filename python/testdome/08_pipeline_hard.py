@@ -118,7 +118,6 @@ Tests: 3 pass / 0 fail
   Various data types: Correct answer 
 """
 
-
 # 1) Various functions: "pipeline.py", line 11, in helper: IndexError
 
 class Pipeline:
