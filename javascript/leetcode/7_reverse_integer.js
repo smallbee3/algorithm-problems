@@ -7,10 +7,6 @@ var reverse = function(x) {
     let i = 0;
     let isMinus = null;
 
-    if (x > (2 ** 31 - 1) || x < (-1 * 2 ** 31)) {
-        return 0;
-    }
-
     if (x < 0) {
         isMinus = true;
         x = x * -1;
