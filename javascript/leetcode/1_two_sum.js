@@ -32,6 +32,39 @@ var twoSum = function(nums, target) {
     }
 }
 
-// result = twoSum([2, 7, 11, 15], 9)
-result = twoSum([0, 4, 3, 0], 0)
-console.log(result)
+// twoSum([2, 7, 11, 15], 9)
+// twoSum([0, 4, 3, 0], 0)
+
+
+
+// 200331
+// Approach 3: (timeover)
+// ( JS array method < for loop with index)
+
+var twoSum = function(nums, target) {
+    let result = [];
+    nums.some((element, index, arr) => {
+        if (target - element === element) {
+            arr.forEach((element2, index) => {
+                if (element === element2) result.push(index);
+            });
+            
+            if (result.length > 1) {
+                return true;
+            }
+            result = [];
+        }
+
+        else if (arr.indexOf(target - element) > -1) {
+            result = [index, arr.indexOf(target - element)];
+            return true;
+        }
+    });
+    return result;
+};
+
+
+
+// twoSum([2, 7, 11, 15], 9);
+// twoSum([3, 3], 6);
+twoSum([3, 2, 4], 6);
