@@ -18,7 +18,7 @@ var twoSum = function(nums, target) {
     }
 };
 
-// Approach 2: Selective Search < Approach 2
+// Approach 2: Selective Search > Approach 1
 var twoSum = function(nums, target) {
     for (let i = 0; i < nums.length - 1; i++) {
         
@@ -38,7 +38,7 @@ var twoSum = function(nums, target) {
 
 
 // 200331
-// Approach 3: (timeover)
+// Approach 3: Selective Search (timeover)
 // ( JS array method < for loop with index)
 
 var twoSum = function(nums, target) {

@@ -227,7 +227,7 @@ printLinkedList(result);
 
 
 
-// printLinkedList(makeLinkedList(10000000000000000001))
-// printLinkedList(makeLinkedList(465))
-// result = addTwoNumbers(makeLinkedList(1000000000000000000000000000001), makeLinkedList(465))
-// printLinkedList(result)
+printLinkedList(makeLinkedList(10000000000000000001))
+printLinkedList(makeLinkedList(465))
+result = addTwoNumbers(makeLinkedList(1000000000000000000000000000001), makeLinkedList(465))
+printLinkedList(result)
