@@ -14,8 +14,13 @@
 // from 19:51pm
 // from 21:14pm
 
+// 1) insertSort
 // Runtime: 240 ms, faster than 5.15%
 // Memory Usage: 48.2 MB, less than 5.28%
+
+// 2) quickSort
+// Runtime: 156 ms, faster than 5.15%
+// Memory Usage: 46.2 MB, less than 5.28%
 
 function ListNode(val, next) {
   this.val = val === undefined ? 0 : val;
@@ -84,8 +89,28 @@ const insertSort = (l1_arr, l2_arr) => {
       }
     }
   });
-
   return l2_arr;
+};
+
+const quickSort = (arr) => {
+  if (arr.length <= 1) return arr;
+
+  const center_idx = Math.floor(arr.length / 2);
+  const center = arr[center_idx];
+
+  arr.splice(center_idx, 1);
+
+  const leftArr = [];
+  const rightArr = [];
+  arr.map((element) => {
+    if (element <= center) {
+      leftArr.push(element);
+    } else {
+      rightArr.push(element);
+    }
+  });
+
+  return [...quickSort(leftArr), center, ...quickSort(rightArr)];
 };
 
 var mergeTwoLists = function (l1, l2) {
@@ -95,7 +120,8 @@ var mergeTwoLists = function (l1, l2) {
   console.log({ l1_arr });
   console.log({ l2_arr });
 
-  const merged_arr = insertSort(l1_arr, l2_arr);
+  //   const merged_arr = insertSort(l1_arr, l2_arr);
+  const merged_arr = quickSort(l1_arr.concat(l2_arr));
 
   const merged_arr_reversed = reverseArr(merged_arr);
   console.log({ merged_arr_reversed });
@@ -104,16 +130,16 @@ var mergeTwoLists = function (l1, l2) {
 
 // const l1 = [1, 2, 4];
 // const l2 = [1, 3, 4];
-// const l1 = [4, 2, 1];
-// const l2 = [4, 3, 1];
+const l1 = [4, 2, 1];
+const l2 = [4, 3, 1];
 // const l1 = []
 // const l2 = [0]
 // const l1 = [];
 // const l2 = [];
 // const l1 = [1];
 // const l2 = [];
-const l1 = [2];
-const l2 = [1];
+// const l1 = [2];
+// const l2 = [1];
 
 const result = mergeTwoLists(
   makeListNodeFromArray(l1),

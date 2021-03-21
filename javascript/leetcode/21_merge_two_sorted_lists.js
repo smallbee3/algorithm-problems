@@ -22,17 +22,23 @@ var mergeTwoLists = function(l1, l2) {
         let array = [];
 
         // [], [] -> null, null
-        if (!l) return array;
+        // if (!l) return array;
 
-        while (true) {
-            array.push(l.val);
-            if (l.next !== null) {
-                l = l.next;
-            }
-            else {
-                break;
-            }
+        // while (true) {
+        //     array.push(l.val);
+        //     if (l.next !== null) {
+        //         l = l.next;
+        //     }
+        //     else {
+        //         break;
+        //     }
+        // }
+
+        while (l) {
+            array.push(l.val)
+            l = l.next
         }
+
         return array;
     }
 
