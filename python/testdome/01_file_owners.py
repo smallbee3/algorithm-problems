@@ -11,6 +11,18 @@ the group_by_owners function should return
 {'Randy': ['Input.txt', 'Output.txt'], 'Stan': ['Code.py']}.
 
 
+def group_by_owners(files):
+    return None
+
+if __name__ == "__main__":
+    files = {
+        'Input.txt': 'Randy',
+        'Code.py': 'Stan',
+        'Output.txt': 'Randy'
+    }
+    print(group_by_owners(files))
+
+
 Time: 10.41 min
 Tests: 3 pass / 0 fail
   Example case: Correct answer
@@ -56,7 +68,7 @@ Tests: 3 pass / 0 fail
 
 
 """
-181111 Review
+181111 Review 1
 
 Time: 5 min
 Tests: 3 pass / 0 fail
@@ -67,10 +79,8 @@ Tests: 3 pass / 0 fail
 
 
 class FileOwners:
-
     @staticmethod
     def group_by_owners(files):
-
         new_dict = {}
         for k, v in files.items():
             if new_dict.get(v):
@@ -81,11 +91,7 @@ class FileOwners:
         return new_dict
 
 
-files = {
-    'Input.txt': 'Randy',
-    'Code.py': 'Stan',
-    'Output.txt': 'Randy'
-}
+files = {'Input.txt': 'Randy', 'Code.py': 'Stan', 'Output.txt': 'Randy'}
 print(FileOwners.group_by_owners(files))
 
 
@@ -124,3 +130,11 @@ Tests: 3 pass / 0 fail
 #     'Output.txt': 'Randy'
 # }
 # print(FileOwners.group_by_owners(files))
+
+
+"""
+230807 Review 3
+
+Time: 5.37 min
+Code: The same as "Review 1"
+"""

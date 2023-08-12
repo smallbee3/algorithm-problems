@@ -83,13 +83,11 @@ Tests: 4 pass / 0 fail
 
 
 class IceCreamMachine:
-
     def __init__(self, ingredients, toppings):
         self.ingredients = ingredients
         self.toppings = toppings
 
     def scoops(self):
-
         comb_list = []
 
         # Think why this code can be deleted
@@ -116,7 +114,6 @@ Double 'for comprehension'
 
 
 class IceCreamMachine:
-
     def __init__(self, ingredients, toppings):
         self.ingredients = ingredients
         self.toppings = toppings
@@ -124,3 +121,26 @@ class IceCreamMachine:
     def scoops(self):
         return [[a, b] for a in self.ingredients for b in self.toppings]
 
+
+# 230807
+"""
+Double 'for comprehension'
+
+    (x)
+    matrix = [[(i, j) for i in range(m)] for j in range(n)]
+    print(matrix)
+    > [[(0, 0), (1, 0)], [(0, 1), (1, 1)], [(0, 2), (1, 2)]]
+
+    (o)
+    matrix = [(i, j) for i in range(m) for j in range(n)]
+    print(matrix)
+    > [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]
+"""
+
+
+"""
+230807 Review 4
+
+Time: 4 min
+Code: The same as "Review 2"
+"""

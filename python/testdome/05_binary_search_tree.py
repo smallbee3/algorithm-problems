@@ -39,7 +39,6 @@ import collections
 class BinarySearchTree:
     Node = collections.namedtuple('Node', ['left', 'right', 'value'])
 
-
     @staticmethod
     def contains(root, value):
         # 1) while loop
@@ -115,8 +114,7 @@ class BinarySearchTree:
 
     @staticmethod
     def contains(root, value):
-
-        # 1) while loop
+        # 1) while loop (without recursion)
         # node = root
         # while node:
         #     if node.value == value:
@@ -145,3 +143,40 @@ n3 = BinarySearchTree.Node(value=3, left=None, right=None)
 n2 = BinarySearchTree.Node(value=2, left=n1, right=n3)
 
 print(BinarySearchTree.contains(n2, 1))
+
+
+"""
+230807 Review 4
+
+Time: 20 (min)
+Code:
+"""
+
+## Needs to be refactored as the above two solutions ##
+
+# class BinarySearchTree:
+#     Node = collections.namedtuple('Node', ['left', 'right', 'value'])
+
+#     @staticmethod
+#     def contains(root, value):
+#         # print(root)
+#         # print(root.left)
+#         # print(root.right)
+#         # print(root.value)
+
+#         if root.value == value:
+#             return True
+#         elif root.value > value:
+#             print(11)
+#             if root.left:
+#                 return BinarySearchTree.contains(root.left, value)
+#             else:
+#                 return False
+#         elif root.value < value:
+#             print(22)
+#             if root.right:
+#                 return BinarySearchTree.contains(root.right, value)
+#             else:
+#                 return False
+#         else:
+#             return False

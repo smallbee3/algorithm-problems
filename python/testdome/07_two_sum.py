@@ -28,7 +28,6 @@ following pairs of indices:
 
 
 class TwoSum:
-
     @staticmethod
     def find_two_sum(numbers, target_sum):
         """
@@ -82,7 +81,6 @@ class TwoSum:
         """
         dict1 = {}
         for i_num, i in enumerate(numbers):
-
             # To cope with 'numbers' having duplicate numbers
             if dict1.get(i):
                 dict1[i] += [i_num]
@@ -92,7 +90,6 @@ class TwoSum:
         for key, value in dict1.items():
             target_num = target_sum - key
             if target_num in dict1:
-
                 if key != target_num:
                     return dict1[key][0], dict1[target_num][0]
 
@@ -116,7 +113,6 @@ Tests: 4 pass / 0 fail
 
 
 class TwoSum:
-
     @staticmethod
     def find_two_sum(numbers, target_sum):
         """
@@ -136,7 +132,6 @@ class TwoSum:
             num = target_sum - key
             # if num in number_dict:
             if number_dict.get(num):
-
                 # 1) fail - because the exception case go to else: directly
                 # if num == key and len(number_dict[num]) > 1:
                 #     print(number_dict[key][0], number_dict[num][1])
@@ -215,7 +210,6 @@ Tests: 4 pass / 0 fail
 
 
 class TwoSum:
-
     @staticmethod
     def find_two_sum(numbers, target_sum):
         """
@@ -239,11 +233,10 @@ class TwoSum:
 
             # 181129
             # 1) This also works !
-            if num in dict1:
+            # if num in dict1:
 
             # 2)
-            # if dict1.get(num):
-
+            if dict1.get(num):
                 if i != num:
                     return dict1[i][0], dict1[num][0]
                 if len(dict1[i]) > 1:
@@ -252,3 +245,54 @@ class TwoSum:
 
 
 print(TwoSum.find_two_sum([1, 1, 5, 7, 5, 8], 10))
+
+
+"""
+230810 Review 3
+
+Time : 14 + @(디버깅시간) / 11 + @(문제해석시) (min간
+"""
+
+
+class TwoSum:
+    @staticmethod
+    def find_two_sum(numbers, target_sum):
+        # 1) two ranges
+        # 14.13 min
+        # for i in range(len(numbers) - 1):
+        #     for j in range(len(numbers) - i - 1):
+        #         j = j + i + 1
+        #         # print('i, j: ', i, j)
+        #         sub_target = target_sum - numbers[i]
+        #         if numbers[j] == sub_target:
+        #             return i, j
+        # return None
+
+        # 2)
+        # 11.04 min
+        adict = {}
+        for idx, i in enumerate(numbers):
+            if adict.get(i):
+                adict[i].append(idx)
+            else:
+                adict[i] = [idx]
+
+        for k, v in adict.items():
+            sub_target = target_sum - k
+
+            if adict.get(sub_target):
+                idxes = adict[sub_target]
+                if sub_target == k and len(idxes) > 1:
+                    return idxes[0], idxes[1]
+                if sub_target != k:
+                    return v[0], idxes[0]
+        return None
+
+
+if __name__ == "__main__":
+    print(TwoSum.find_two_sum([3, 3, 5, 7, 5, 9], 10))
+    print(TwoSum.find_two_sum([5, 1, 2, 7, 3, 9], 10))
+    print(TwoSum.find_two_sum([1, 1, 5, 7, 5, 8], 10))
+
+    print(TwoSum.find_two_sum([1, 1, 7, 5, 8], 10))
+    print(TwoSum.find_two_sum([4, 1, 7, 6], 10))

@@ -172,7 +172,7 @@ Tests: 4 pass / 0 fail
 
 
 """
-181129 Review
+181129 Review 2
 
 Time : 5 (min)
 Tests: 4 pass / 0 fail
@@ -231,3 +231,36 @@ third.next_song(first)
 fourth.next_song(first)
 
 print(first.is_repeating_playlist())
+
+"""
+230810 Review 3
+
+Time: 20 min
+"""
+
+
+class Song:
+    def __init__(self, name):
+        self.name = name
+        self.next = None
+
+    def next_song(self, song):
+        self.next = song
+
+    def is_repeating_playlist(self):
+        """
+        :returns: (bool) True if the playlist is repeating, False if not.
+        """
+        if not self or self.next is None:
+            return False
+
+        curr_song = self
+        song_name_list = []
+
+        while curr_song:
+            song_name_list.append(curr_song.name)
+            if curr_song.next and curr_song.next.name in song_name_list:
+                return True
+            curr_song = curr_song.next
+
+        return False

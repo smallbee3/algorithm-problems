@@ -24,7 +24,6 @@ Tests: 3 pass / 0 fail
 
 
 class Palindrome:
-
     # 1) len(list)
     # @staticmethod
     # def is_palindrome(word):
@@ -47,13 +46,12 @@ class Palindrome:
     def is_palindrome(word):
         word = word.lower()
         for i in range(len(word) // 2):
-
             # print(i)
             # print(word[i])
             # print(-(i+1))
             # print(word[-(i+1)])
 
-            if word[i] != word[-(i+1)]:
+            if word[i] != word[-(i + 1)]:
                 return False
         return True
 
@@ -84,3 +82,23 @@ Tests: 3 pass / 0 fail
 #
 #
 # print(Palindrome.is_palindrome('Deleveled'))
+
+
+"""
+230807 Review 2
+
+Time: 8.19 min
+Code: The same as ...
+Mistake:
+  Useless if statement because whether num_of_word is odd or even doesn't matter
+        if num_of_word % 2 == 0:
+            for i in range(num_of_word // 2):
+                if word[i] != word[num_of_word - i - 1]:
+                    return False
+
+        else:
+            for i in range(num_of_word // 2):
+                if word[i] != word[num_of_word - i - 1]:
+                    return False
+
+"""

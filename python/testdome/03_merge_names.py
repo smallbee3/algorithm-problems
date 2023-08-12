@@ -73,10 +73,8 @@ Tests: 4 pass / 0 fail
 
 
 class MergeNames:
-
     @staticmethod
     def unique_names(names1, names2):
-
         # 1) set
         # names1 = list(set(names1))
 
@@ -103,4 +101,12 @@ class MergeNames:
 
 names1 = ["Ava", "Emma", "Olivia"]
 names2 = ["Olivia", "Sophia", "Emma"]
-print(MergeNames.unique_names(names1, names2)) # should print Ava, Emma, Olivia, Sophia
+print(MergeNames.unique_names(names1, names2))  # should print Ava, Emma, Olivia, Sophia
+
+
+"""
+230807 Review 2
+
+Time: 3 min
+Code: The same as  ...
+"""
