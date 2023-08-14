@@ -13,8 +13,8 @@ None value should be provided as the parent. A call to get_children
 should return an array containing the direct children of the specified
 category in any order.
 
-KeyError should be thrown when adding a category that ahs already
-been added anywhere in the CategoryTree of if a parent is specified
+KeyError or Exception should be thrown when adding a category that has already
+been added anywhere in the CategoryTree or if a parent is specified
 but does not exist.
 
 For example:
@@ -48,7 +48,6 @@ Tests : 3 pass ?
 
 
 class CategoryTree:
-
     def __init__(self):
         pass
 
@@ -63,8 +62,7 @@ c = CategoryTree()
 c.add_category('A', None)
 c.add_category('B', 'A')
 c.add_category('C', 'A')
-# print(','.join(c.get_children('A') or []))
-
+print(','.join(c.get_children('A') or []))
 
 
 # class CategoryTree:
@@ -186,7 +184,7 @@ Tests : 1 pass / 2 fail
 
 
 """
-181112 Review
+181112 Review 2
 
 Time : 18 min
 Tests : 3 pass ?
@@ -198,12 +196,10 @@ Tests : 3 pass ?
 
 
 class CategoryTree:
-
     def __init__(self):
         self.category_dict = {}
 
     def add_category(self, category, parent):
-
         if category in self.category_dict:
             raise KeyError('Same category already exists!')
             # raise KeyError('The parent node already exists!')
@@ -246,7 +242,7 @@ print(','.join(c.get_children('B') or []))
 
 
 """
-181130 Review 2
+181130 Review 3
 
 Time : 25 min
 Tests : 3 pass ?
@@ -261,7 +257,6 @@ Tests : 3 pass ?
 
 
 class CategoryTree:
-
     def __init__(self):
         # self.name = None
         # self.parent = None
@@ -319,3 +314,55 @@ c.add_category('H', 'B')
 
 print(','.join(c.get_children('A') or []))
 print(','.join(c.get_children('B') or []))
+
+
+"""
+230816 Review 4
+
+Time : 20 min
+"""
+
+
+class CategoryTree:
+    def __init__(self):
+        self.category_dict = {}
+
+    def add_category(self, category, parent):
+        if category in self.category_dict:
+            raise Exception('category already exist')
+
+        if parent is None:
+            self.category_dict[category] = []
+        else:
+            self.category_dict[category] = []
+            self.category_dict[parent].append(category)
+
+    def get_children(self, parent):
+        return self.category_dict[parent]
+
+
+if __name__ == "__main__":
+    # 1) Basic test case
+    c = CategoryTree()
+    c.add_category('A', None)
+    c.add_category('B', 'A')
+    c.add_category('C', 'A')
+    print(','.join(c.get_children('A') or []))
+    print(','.join(c.get_children('B') or []))
+    print(','.join(c.get_children('C') or []))
+
+    # 2) Complex test case
+    c.add_category('D', 'B')
+    c.add_category('E', 'B')
+    c.add_category('F', 'C')
+    c.add_category('G', 'C')
+    c.add_category('H', 'C')
+    print(','.join(c.get_children('A') or []))
+    print(','.join(c.get_children('B') or []))
+    print(','.join(c.get_children('C') or []))
+
+    # 3) KeyError test case
+    # c.add_category('I', 'Z')
+
+    # 4) Exception test case
+    # c.add_category('H', 'C')
