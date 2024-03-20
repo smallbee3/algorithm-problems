@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-black = "^23.7.0"
+black = "^24.3.0"
 flake8 = "^6.1.0"
 
 
